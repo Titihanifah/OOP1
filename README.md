@@ -1,5 +1,6 @@
-# tubes-1
-OOP
+# tubes 1 OOP - Kalkulator
+
+***TUTORIAL git dan GitHub***
 
 //REFERENSI
 
@@ -8,7 +9,7 @@ tutorial install msysgit dan clone repo : http://techylab.com/761/setting-up-git
 dokumentasi resmi git : http://git-scm.com/docs
 
 
-//Cara sinkronisasi file di komputer dengan di GitHub
+//CARA SINKRONISASI FILE DI KOMPUTER KITA DENGAN GITHUB
 
 Jika sudah berhasil clone repo github ke sebuah direktori di komputer kita (baca tutorial di atas),
 maka kita bisa mulai sinkronisasi.
@@ -36,9 +37,9 @@ file-file yang ada di direktori komputer kita.
 
 *** Hindari pengeditan file yang sama secara berbarengan, bisa conflict.
 
-Ada cara resolvenya, cuma ntar jadi agak repot. Jadi lebih baik dibagi"
+Ada cara resolvenya, cuma ntar jadi agak repot. 
 
-tugasnya *** TERIMA KASIH
+Jadi lebih baik dibagi" tugasnya *** TERIMA KASIH
 
-NB: Kalau ada pertanyaan lewat FB atau LINE. Tapi ga yakin bisa gw jawab semua.
- Sama-sama masih belajar. Selamat mencoba ! LOL...
+NB: Kalau ada pertanyaan lewat FB atau LINE. Tapi ga yakin bisa gw jawab semua,
+ sama-sama masih belajar. Selamat mencoba ! LOL...
