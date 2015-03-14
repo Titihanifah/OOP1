@@ -3,6 +3,7 @@ OOP
 
 tutorial msysgit : http://techylab.com/761/setting-up-git-work-environment-on-windows/
 
+
 Jika sudah berhasil clone repo github ke sebuah direktori di komputer kita (baca tutorial di atas),
 maka kita bisa mulai menggunakannya.
 Langkah-langkah sinkronisasi file menggunakan Git GUI, jika kita ingin sinkronisasi file:
@@ -17,3 +18,6 @@ melalui update-an yg kita dapat dari proses "fetch from")
 
 Jika success, maka otomatis file-file di repo github akan sama persis dengan
 file-file yang ada di direktori komputer kita.
+
+//test
+
