@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include "Stack.h"
-#include "ExpresseionEvaluator.h"
+#include "ExpressionEvaluator.h"
 
 using namespace std;
 	
@@ -29,20 +29,22 @@ int ExpressionEvaluator::calculate()
 	{
 		if (isOperator(expression[i]))
 		{
+			printf("1\n");
 			opFlag = 1;
-			int a = st.pop();
-			int b = st.pop();
+			int a,b;
+			st.pop(a);
+			st.pop(b);
 			
-			if (expression[i] == "+") st.push(a+b);
-			else if (expression[i] == "-") st.push(a-b);
-			else if (expression[i] == "/") st.push(a/b);
-			else if (expression[i] == "*") st.push(a*b);
-			else if (expression[i] == "%") st.push(a%b);
+			if (expression[i] == '+') st.push(a+b);
+			else if (expression[i] == '-') st.push(a-b);
+			else if (expression[i] == '/') st.push(a/b);
+			else if (expression[i] == '*') st.push(a*b);
+			else if (expression[i] == '%') st.push(a%b);
 				
-		}else if (expression[i] == " ")
+		}else if (expression[i] == ' ')
 		{
 			if (opFlag == 0){
-			int xx = atoi(temp.c_str());
+				int xx = atoi(temp.c_str());
 				st.push(xx);
 				temp = "";
 			}
@@ -51,5 +53,7 @@ int ExpressionEvaluator::calculate()
 			temp.append(string(1,expression[i]));
 		}
 	}
-	return st.pop();
+	int tt;
+	st.pop(tt);
+	return tt;
 }

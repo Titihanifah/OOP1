@@ -3,7 +3,7 @@
 
 class ExpressionEvaluator{
 private:
-	stack<int> st;
+	Stack<int> st;
 	string temp;
 	string expression;
 	int opFlag;
