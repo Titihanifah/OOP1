@@ -57,6 +57,11 @@ void CommandHistory::undo()
 	}
 }
 
+void CommandHistory::undo(int n)
+{
+	for (int i=0;i<n;i++) undo();
+}
+
 void CommandHistory::redo()
 {
 	string temp;
@@ -91,17 +96,65 @@ void CommandHistory::redo()
 	}
 }
 
-void CommandHistory::showMem()
+void CommandHistory::redo(int n)
 {
-	
+	for (int i=0;i<n;i++) redo();	
+}
+
+void CommandHistory::showMem(int n)
+{
+	printf("Histories:\n\n");
+	int m = n;
+	while(!undoStack.isEmpty() && m>0)
+	{
+		string temp;
+		undoStack.pop(temp);
+		redoStack.push(temp);
+		printf("\t%s\n",temp.c_str());m--;
+	}
+	while(!redoStack.isEmpty())
+	{
+		string temp;
+		redoStack.pop(temp);
+		undoStack.push(temp);
+	}
 }
 
 void CommandHistory::showAll()
 {
-	
+	printf("Histories:\n\n");
+	while(!undoStack.isEmpty())
+	{
+		string temp;
+		undoStack.pop(temp);
+		redoStack.push(temp);
+		printf("\t%s\n",temp.c_str());
+	}
+	while(!redoStack.isEmpty())
+	{
+		string temp;
+		redoStack.pop(temp);
+		undoStack.push(temp);
+	}
 }
 
-void CommandHistory::save()
+void CommandHistory::save(string filename)
 {
+	FILE* fp = fopen(filename.c_str(),"w");
 	
+	while(!undoStack.isEmpty())
+	{
+		string temp;
+		undoStack.pop(temp);
+		redoStack.push(temp);
+		fprintf(fp,"%s\n",temp.c_str());
+	}
+	while(!redoStack.isEmpty())
+	{
+		string temp;
+		redoStack.pop(temp);
+		undoStack.push(temp);
+	}
+	
+	fclose(fp);
 }
