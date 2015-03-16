@@ -6,6 +6,7 @@ Calculator::Calculator() {
 	NumType = 1;
 	ExpType = 1;
 	Mode = 1;
+	CommandHistory cmdHistory(this);
 }
 Calculator::Calculator(const Calculator& c) {
 	OprType = c.OprType;
@@ -91,7 +92,7 @@ void Calculator::executeCommand(string Cmd) {
 	}
 	else if (Cmd  == "ShowMem") {
 		cmdHistory.putCommand(Cmd);
-		cmdHistory.showMem();
+		cmdHistory.showMem(n);
 	}
 	else if (Cmd ==  "ShowAll") {
 		cmdHistory.putCommand(Cmd);
@@ -99,15 +100,15 @@ void Calculator::executeCommand(string Cmd) {
 	}
 	else if (Cmd ==  "Redo") {
 		cmdHistory.putCommand(Cmd);
-		cmdHistory.redo();
+		cmdHistory.redo(n);
 	}
 	else if (Cmd ==  "Undo") {
 		cmdHistory.putCommand(Cmd);
-		cmdHistory.undo();
+		cmdHistory.undo(n);
 	}
 	else if (Cmd ==  "Save") {
 		cmdHistory.putCommand(Cmd);
-		cmdHistory.save();
+		cmdHistory.save(namafile);
 	}
 }
 void Calculator::setMode(int M) {

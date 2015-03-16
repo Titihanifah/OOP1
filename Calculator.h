@@ -3,6 +3,7 @@
 #define CALCULATOR_H
 #include <iostream>
 #include <string>
+#include "CommandHistory.h"
 using namespace std;
 
 class Calculator {
