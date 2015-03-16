@@ -1,6 +1,6 @@
 /* Calculator.cpp */
 #include "Calculator.h"
-//ctor
+
 Calculator::Calculator() {
 	OprType = 1;
 	NumType = 1;
