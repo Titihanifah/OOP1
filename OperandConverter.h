@@ -1,6 +1,12 @@
 #ifndef __OPERAND_CONVERTER__
 #define __OPERAND_CONVERTER__
 
+#include <cstdio>
+#include <cstring>
+#include <string>
+#include <sstream>
+#include "RomanNumber.h"
+
 /************************************************************
 
 Class OperandConverter (string)
@@ -12,15 +18,14 @@ Methods:
 
 *************************************************************/
 
-class operandConverter
+class OperandConverter
 {
 private:
 	string romawiExpression;
-	int romawiToInteger(char* romawi);
 	int isOperator(char in);
 	
 public:
-	operandConverter(string in);
+	OperandConverter(string in);
 	string toArabicExpression();
 };
 
