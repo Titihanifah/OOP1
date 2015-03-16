@@ -4,9 +4,7 @@
 #define NUMBER_H
 
 class Number {
-  public : 
+  protected : 
 	virtual std::string getStrValue() = 0;
-	virtual int toArabicNumber() = 0;
 };
-
 #endif
