@@ -90,7 +90,7 @@ void Calculator::executeCommand(string Cmd) {
 		}
 			
 	}
-	else if (Cmd  == "ShowMem <n>") {
+	else if (Cmd  == "ShowMem") {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
@@ -101,14 +101,14 @@ void Calculator::executeCommand(string Cmd) {
 		cmdHistory.putCommand(Cmd);
 		cmdHistory.showAll();
 	}
-	else if (Cmd ==  "Redo <n>") {
+	else if (Cmd ==  "Redo") {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
 		sscanf("%s <%d>" , s, n);
 		cmdHistory.redo(n);
 	}
-	else if (Cmd ==  "Undo <n>") {
+	else if (Cmd ==  "Undo") {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
