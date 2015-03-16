@@ -90,25 +90,34 @@ void Calculator::executeCommand(string Cmd) {
 		}
 			
 	}
-	else if (Cmd  == "ShowMem") {
+	else if (Cmd  == "ShowMem <n>") {
 		cmdHistory.putCommand(Cmd);
+		char* s = (char*) Cmd.c_str();
+		int n;
+		sscanf("%s <%d>" , s, n);
 		cmdHistory.showMem(n);
 	}
 	else if (Cmd ==  "ShowAll") {
 		cmdHistory.putCommand(Cmd);
 		cmdHistory.showAll();
 	}
-	else if (Cmd ==  "Redo") {
+	else if (Cmd ==  "Redo <n>") {
 		cmdHistory.putCommand(Cmd);
+		char* s = (char*) Cmd.c_str();
+		int n;
+		sscanf("%s <%d>" , s, n);
 		cmdHistory.redo(n);
 	}
-	else if (Cmd ==  "Undo") {
+	else if (Cmd ==  "Undo <n>") {
 		cmdHistory.putCommand(Cmd);
+		char* s = (char*) Cmd.c_str();
+		int n;
+		sscanf("%s <%d>" , s, n);
 		cmdHistory.undo(n);
 	}
 	else if (Cmd ==  "Save") {
 		cmdHistory.putCommand(Cmd);
-		cmdHistory.save(namafile);
+		cmdHistory.save();
 	}
 }
 void Calculator::setMode(int M) {
