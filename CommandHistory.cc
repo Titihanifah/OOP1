@@ -1,9 +1,8 @@
 #include "CommandHistory.h"
+#include "Calculator.h"
 
-CommandHistory::CommandHistory(Calculator* calculator)
-{
-	this->calculator = calculator;
-}
+CommandHistory::CommandHistory()
+{}
 
 void CommandHistory::putCommand(string in)
 {
@@ -25,6 +24,7 @@ void CommandHistory::putCommand(string in)
 
 void CommandHistory::undo()
 {
+	/*
 	string temp;
 	undoStack.pop(temp);
 	redoStack.push(temp);
@@ -54,7 +54,7 @@ void CommandHistory::undo()
 			if (strcmp(ttemp,"in") == 0) calculator->setExpressionType(Calculator::INFIKS_OPERATOR);
 			if (strcmp(ttemp,"pref") == 0) calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);
 		}
-	}
+	}*/
 }
 
 void CommandHistory::undo(int n)
@@ -64,6 +64,7 @@ void CommandHistory::undo(int n)
 
 void CommandHistory::redo()
 {
+	/*
 	string temp;
 	redoStack.pop(temp);
 	undoStack.push(temp);
@@ -94,6 +95,7 @@ void CommandHistory::redo()
 			if (strcmp(ttemp,"pref") == 0) calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);
 		}
 	}
+	*/
 }
 
 void CommandHistory::redo(int n)
@@ -138,8 +140,10 @@ void CommandHistory::showAll()
 	}
 }
 
-void CommandHistory::save(string filename)
+void CommandHistory::save()
 {
+	string filename;
+	printf("Filename : ");cin >> filename;
 	FILE* fp = fopen(filename.c_str(),"w");
 	
 	while(!undoStack.isEmpty())

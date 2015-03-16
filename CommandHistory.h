@@ -6,17 +6,15 @@
 #include <string>
 #include <fstream>
 #include "Stack.h"
-#include "Calculator.h"
 using namespace std;
 
 class CommandHistory
 {
+public:
 	Stack<string> undoStack;
 	Stack<string> redoStack;
-	Calculator* calculator;
-	
-public:
-	CommandHistory(Calculator* calculator);
+
+	CommandHistory();
 	
 	void putCommand(string in);
 	
@@ -30,7 +28,7 @@ public:
 	
 	void showAll();
 	
-	void save(string);
+	void save();
 };
 
 #endif
