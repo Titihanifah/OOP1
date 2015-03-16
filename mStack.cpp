@@ -3,10 +3,14 @@
 #include <iostream>
 using namespace std;
 int main(){
-	Stack <int> S(10);
+	Stack <int> S(2);
 	int e;
+	printf("isEmpty(S)=%d\n",S.isEmpty());
+	printf("isFull(S)=%d\n",S.isFull());
 	S.push(5);
 	S.push(3);
+	printf("isEmpty(S)=%d\n",S.isEmpty());
+	printf("isFull(S)=%d\n",S.isFull());
 	Stack<int> S2=S;
 	S.pop(e);
 	printf("e=%d\n",e);
