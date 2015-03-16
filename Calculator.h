@@ -14,9 +14,9 @@ class Calculator {
 		int Mode;
 		CommandHistory cmdHistory;
 	public :
-		Calculator();
-		Calculator(const Calculator&);
-		~Calculator();
+		Calculator();//ctor
+		Calculator(const Calculator&);//cctor
+		~Calculator();//dtor
 		const static int POSTFIKS_OPERATOR = 1;
 		const static int INFIKS_OPERATOR = 2;
 		const static int PREFIKS_OPERATOR = 3;
