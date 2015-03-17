@@ -1,10 +1,9 @@
-//#include "Number.h"
 #include <string>
 #include <cstdlib>
 #include "Number.h"
 using namespace std;
-#ifndef RomanNumber_h
-#define RomanNumber_h
+#ifndef ROMANNUMBER_h
+#define ROMANNUMBER_h
 class RomanNumber :public Number{
 	private:
 	//data member
