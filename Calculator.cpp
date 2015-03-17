@@ -48,7 +48,7 @@ int Calculator::getMode() {
 }
 
 void Calculator::executeCommand(string Cmd) {
-	string eksepresi, out, postfiks;
+	string ekspresi, postfiks;
 	if (getMode() == 2) {
 		if (Cmd == "Set") {
 			string input;
@@ -121,7 +121,7 @@ void Calculator::executeCommand(string Cmd) {
 			}
 			// ubah ekspresi ke postfiks
 			expConverter.ExpressionConverter ec;
-			int exp = getExpType();
+			int exp = getExpressionType();
 			ec.setExpType(exp);
 			postfiks = ec.toPostfiks(ekspresi);
 			// hitung hasil
