@@ -12,6 +12,7 @@ private:
 	
 public:	
 	ExpressionEvaluator();
+	void setExpression(string input);
 	int calculateArith();
 	int calculateLogic();
 };
