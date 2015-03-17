@@ -23,4 +23,12 @@ int LogicNumber:: toArabicNumber(){
 		return 1;
 	else if(StrValue.compare("0")==0 || StrValue.compare("false")==0)
 		return 0;
+	else{ // arabic number biasa, untuk ekspresi relasional
+		int val=0, i=0;
+		while(StrValue[i]!='\0'){
+			val=val*10+(StrValue[i]-'0');
+			i++;
+		}
+		return val;
+	}
 }

@@ -3,6 +3,12 @@
 #include <string>
 using namespace std;
 
+#include <cstdio>
+#include <cstring>
+#include <string>
+#include <sstream>
+#include "Stack.h"
+using namespace std;
 class ExpressionEvaluator{
 private:
 	Stack<int> st;
@@ -17,6 +23,7 @@ public:
 	void setExpression(string input); // setEkspresi
 	int calculateArith();
 	int calculateLogic();
+	void setExpression(string);
 };
 
 #endif

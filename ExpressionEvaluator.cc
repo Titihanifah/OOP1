@@ -1,11 +1,5 @@
-#include <cstdio>
-#include <cstring>
-#include <string>
-#include <sstream>
-#include "Stack.h"
 #include "ExpressionEvaluator.h"
 
-using namespace std;
 	
 int ExpressionEvaluator::isOperatorArith(char in)
 {
@@ -30,7 +24,6 @@ int ExpressionEvaluator::isOperatorLogic(char in)
 	if(in == '&') return 1;
 	if(in == '|') return 1;
 	if(in == '!') return 1;
-	if(in == '&') return 1;
 	if(in == '^') return 1;
 	return 0;
 }	
@@ -46,10 +39,10 @@ int ExpressionEvaluator::calculateLogic()
 			if(expression[i]!='!')
 				st.pop(b);
 			switch(expression[i]){
-				case '&': st.push(a && b);
-				case '|': st.push(a || b);
-				case '!': st.push(!a);
-				case '^': st.push(a ^ b);
+				case '&': st.push(a && b); break;
+				case '|': st.push(a || b); break;
+				case '!': st.push(!a); break;
+				case '^': st.push(a ^ b); break;
 			}
 		}
 		else if(expression[i]==' '){
@@ -64,6 +57,9 @@ int ExpressionEvaluator::calculateLogic()
 			opFlag = 0;
 		}
 	}
+	int hasil;
+	st.pop(hasil);
+	return hasil;
 }
  	
 int ExpressionEvaluator::calculateArith()
@@ -73,7 +69,7 @@ int ExpressionEvaluator::calculateArith()
 	{
 		if (isOperatorArith(expression[i]))
 		{
-			printf("1\n");
+			//printf("1\n");
 			opFlag = 1;
 			int a,b;
 			st.pop(a);
