@@ -20,7 +20,6 @@ private:
 	
 public:	
 	ExpressionEvaluator();
-	void setExpression(string input); // setEkspresi
 	int calculateArith();
 	int calculateLogic();
 	void setExpression(string);
