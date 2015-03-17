@@ -54,16 +54,21 @@ void Calculator::executeCommand(string Cmd) {
 		if (Cmd == "Set") {
 			string input;
 			for (int i = 1 ; i <= 3; i++) {
-				cout<<"Ketik 'opr' untuk set operator"<<endl;
-				cout<<"Ketik 'num' untuk set number"<<endl;
-				cout<<"Ketik 'exp' untuk set expression"<<endl;
+				cout<<"----------------------------------------------------------------------------------------------"<<endl;
+				cout<<"1. Ketik 'opr' untuk set operator"<<endl;
+				cout<<"2. Ketik 'num' untuk set number"<<endl;
+				cout<<"3. Ketik 'exp' untuk set expression"<<endl;
+				cout<<"----------------------------------------------------------------------------------------------"<<endl;
 				cin>> input;
+				cout<<"----------------------------------------------------------------------------------------------"<<endl;
 				if (input == "opr") {
 					string inputopr;
-					cout<<"Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
-					cout<<"Ketik 'logic' untuk set operator menjadi logika"<<endl;
-					cout<<"Ketik 'rel' untuk set operator menjadi relational"<<endl;
+					cout<<"1.1 Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
+					cout<<"1.2 Ketik 'logic' untuk set operator menjadi logika"<<endl;
+					cout<<"1.2 Ketik 'rel' untuk set operator menjadi relational"<<endl;
+					cout<<"----------------------------------------------------------------------------------------------"<<endl;
 					cin>> inputopr;
+					system("CLS");
 					cmdHistory.putCommand(inputopr);
 					if (inputopr == "arith") {
 						setOperatorType(ARITMATIKA_OPERATOR);
@@ -78,11 +83,13 @@ void Calculator::executeCommand(string Cmd) {
 						i = i;
 					}
 				}
-				if (input == "num") {
+				else if (input == "num") {
 					string inputnum;
-					cout<<"Ketik 'arabic' untuk set number menjadi arabic"<<endl;
-					cout<<"Ketik 'roman' untuk set number menjadi romawi"<<endl;
+					cout<<"2.1 Ketik 'arabic' untuk set number menjadi arabic"<<endl;
+					cout<<"2.2 Ketik 'roman' untuk set number menjadi romawi"<<endl;
+					cout<<"----------------------------------------------------------------------------------------------"<<endl;
 					cin>>inputnum;
+					system ("CLS");
 					cmdHistory.putCommand(inputnum);
 					if (inputnum == "arabic") { 
 						setNumberType(ARABIC_NUMBER);
@@ -93,12 +100,14 @@ void Calculator::executeCommand(string Cmd) {
 						i = i;
 					}
 				}
-				if (input == "exp") {
+				else if (input == "exp") {
 					string inputexp;
-					cout<<"Ketik 'post' untuk set number menjadi postfiks"<<endl;
-					cout<<"Ketik 'pref' untuk set number menjadi prefiks"<<endl;
-					cout<<"Ketik 'in' untuk set number menjadi infiks"<<endl;
+					cout<<"3.1 Ketik 'post' untuk set number menjadi postfiks"<<endl;
+					cout<<"3.2 Ketik 'pref' untuk set number menjadi prefiks"<<endl;
+					cout<<"3.3 Ketik 'in' untuk set number menjadi infiks"<<endl;
+					cout<<"----------------------------------------------------------------------------------------------"<<endl;
 					cin>>inputexp;
+					system("Cls");
 					cmdHistory.putCommand(inputexp);
 					if (inputexp == "post") {
 						setExpressionType(POSTFIKS_OPERATOR);
@@ -122,9 +131,10 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 1) {
 		if (Cmd == ekspresi) {
 			cmdHistory.putCommand(Cmd);
-			cout<<"Masukan ekspresi : ";
+			cout<<"----------------------------------------------------------------------------------------------"<<endl;
+			cout<<" Masukan ekspresi : ";
 			cin.ignore();
-			getline(cin,ekspresi);
+			getline(cin,ekspresi); cout<<endl;
 			//cout<<ekspresi<<endl;
 			if (getNumberType() == ROMAWI_NUMBER) {
 				// ubah operand ke arabic
@@ -139,19 +149,21 @@ void Calculator::executeCommand(string Cmd) {
 			//cout<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
-				expEvaluator.setExpression(ekspresi);
-				//cout<<ekspresi<<endl;
+				expEvaluator.setExpression(postfiks);
+				cout<<postfiks<<endl;
 				hasil = expEvaluator.calculateArith();
-				cout<<"Hasil : "<<hasil<<endl;
+				cout<<" Hasil : "<<hasil<<endl;
+				cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			}
 			else if (getOperatorType() == 2) { // operator logic
 				expEvaluator.setExpression(ekspresi);
 				hasil = expEvaluator.calculateLogic();
-				cout<<"Hasil : "<<hasil<<endl;
+				cout<<" Hasil : "<<hasil<<endl;
+				cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 			}
 		}	
 	}
-	if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'm' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
+	if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
