@@ -36,6 +36,14 @@ int Calculator::getNumberType() {
 int Calculator::getExpressionType() {
 	return ExpType;
 }
+
+void Calculator::setMode(int M) {
+	Mode = M;
+}
+int Calculator::getMode() {
+	return Mode;
+}
+
 void Calculator::executeCommand(string Cmd) {
 	if (Cmd == "Set") {
 		string input;
@@ -190,10 +198,4 @@ void Calculator::executeCommand(string Cmd) {
 		cmdHistory.putCommand(Cmd);
 		cmdHistory.save();
 	}
-}
-void Calculator::setMode(int M) {
-	Mode = M;
-}
-int Calculator::getMode() {
-	return Mode;
 }
