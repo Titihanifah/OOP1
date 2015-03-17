@@ -7,7 +7,7 @@
 
 using namespace std;
 	
-int ExpressionEvaluator::isOperator(char in)
+int ExpressionEvaluator::isOperatorArith(char in)
 {
 		if (in == '+') return 1;
 		if (in == '-') return 1;
@@ -15,14 +15,17 @@ int ExpressionEvaluator::isOperator(char in)
 		if (in == '*') return 1;
 		if (in == '%') return 1;
 		return 0;
-	}
-	
+}
+int ExpressionEvaluator::isOperatorArith(char in)
+{
+
+}	
 ExpressionEvaluator::ExpressionEvaluator(string input)
 {
 	expression = input;
 }
 	
-int ExpressionEvaluator::calculate()
+int ExpressionEvaluator::calculateArith()
 {
 	opFlag = 0;
 	for (int i=0;i<expression.length();i++)
