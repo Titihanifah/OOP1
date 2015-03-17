@@ -10,8 +10,11 @@ using namespace std;
 int main()
 {
 	ExpressionEvaluator ee;
-	e.setExpression("5 3 32 4 + * /");
-	int res = ee.calculate();
-	printf("%d\n",res);
+	ee.setExpression("5 3 32 4 + * /");
+	int res = ee.calculateArith();
+	printf("arith=%d\n",res);
+	ee.setExpression("1 0 & ! 0 1 | ^");
+	res= ee.calculateLogic();
+	printf("logic=%d\n",res);
 	return 0;
 }

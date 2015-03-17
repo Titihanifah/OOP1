@@ -1,6 +1,12 @@
 #ifndef __EXPRESSION_EVALUATOR__
 #define __EXPRESSION_EVALUATOR__
 
+#include <cstdio>
+#include <cstring>
+#include <string>
+#include <sstream>
+#include "Stack.h"
+using namespace std;
 class ExpressionEvaluator{
 private:
 	Stack<int> st;
@@ -14,6 +20,7 @@ public:
 	ExpressionEvaluator();
 	int calculateArith();
 	int calculateLogic();
+	void setExpression(string);
 };
 
 #endif
