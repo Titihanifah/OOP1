@@ -49,7 +49,7 @@ int Calculator::getMode() {
 
 void Calculator::executeCommand(string Cmd) {
 	string ekspresi, postfiks;
-	if (getMode() == 2) {
+	if (getMode() == 2) { // mode settings
 		if (Cmd == "Set") {
 			string input;
 			cout<<"Ketik 'opr' untuk set operator"<<endl;
@@ -120,10 +120,9 @@ void Calculator::executeCommand(string Cmd) {
 				ekspresi = oprConverter.toArabicExpression();
 			}
 			// ubah ekspresi ke postfiks
-			expConverter.ExpressionConverter ec;
 			int exp = getExpressionType();
-			ec.setExpType(exp);
-			postfiks = ec.toPostfiks(ekspresi);
+			expConverter.setExpType(exp);
+			postfiks = expConverter.toPostfiks(ekspresi);
 			// hitung hasil
 			expEvaluator.setExpression(ekspresi);
 			int hasil = expEvaluator.calculate();
@@ -133,7 +132,7 @@ void Calculator::executeCommand(string Cmd) {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
-		sscanf("%s <%d>" , s, n);
+		sscanf("%s %d" , s, n);
 		cmdHistory.showMem(n);
 	}
 	else if (Cmd ==  "ShowAll") {
@@ -144,7 +143,7 @@ void Calculator::executeCommand(string Cmd) {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
-		sscanf("%s <%d>" , s, n);
+		sscanf("%s %d" , s, n);
 		
 		for (int i=0;i<n;i++)
 		{
@@ -186,7 +185,7 @@ void Calculator::executeCommand(string Cmd) {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;
-		sscanf("%s <%d>" , s, n);
+		sscanf("%s %d" , s, n);
 		
 		for (int i=0;i<n;i++)
 		{
