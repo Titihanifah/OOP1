@@ -39,11 +39,10 @@ int ExpressionEvaluator::calculateArith()
 			st.pop(b);
 			
 			if (expression[i] == '+') st.push(a+b);
-			else if (expression[i] == '-') st.push(a-b);
-			else if (expression[i] == '/') st.push(a/b);
+			else if (expression[i] == '-') st.push(b-a);
+			else if (expression[i] == '/') st.push(b/a);
 			else if (expression[i] == '*') st.push(a*b);
-			else if (expression[i] == '%') st.push(a%b);
-				
+			else if (expression[i] == '%') st.push(b%a);
 		}else if (expression[i] == ' ')
 		{
 			if (opFlag == 0){
@@ -54,6 +53,7 @@ int ExpressionEvaluator::calculateArith()
 		}else
 		{
 			temp.append(string(1,expression[i]));
+			opFlag = 0;
 		}
 	}
 	int tt;
