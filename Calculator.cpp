@@ -112,28 +112,32 @@ void Calculator::executeCommand(string Cmd) {
 	else if (getMode() == 1) {
 		if (Cmd == ekspresi) {
 			cmdHistory.putCommand(Cmd);
-			cout<<"Masukan ekspresi : "<<endl;
-			cin>>ekspresi;
+			cout<<"Masukan ekspresi : ";
+			cin.ignore();
+			getline(cin,ekspresi);
+			//cout<<ekspresi<<endl;
 			if (getNumberType() == ROMAWI_NUMBER) {
 				// ubah operand ke arabic
 				oprConverter.setExpression(ekspresi);
 				ekspresi = oprConverter.toArabicExpression();
+				//cout<<ekspresi<<endl;
 			}
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(ekspresi);
+			//cout<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(ekspresi);
+				//cout<<ekspresi<<endl;
 				hasil = expEvaluator.calculateArith();
-				cout<<"B";
-				cout<<" Hasil : "<<hasil<<endl;
+				cout<<"Hasil : "<<hasil<<endl;
 			}
 			else if (getOperatorType() == 2) { // operator logic
 				expEvaluator.setExpression(ekspresi);
 				hasil = expEvaluator.calculateLogic();
-				cout<<" Hasil : "<<hasil<<endl;
+				cout<<"Hasil : "<<hasil<<endl;
 			}
 		}	
 	}

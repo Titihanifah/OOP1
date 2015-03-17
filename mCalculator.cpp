@@ -7,16 +7,12 @@ int main() {
 	string cmd;
 	cout<<" Masukan mode calculator : "<<endl;
 	cout<<" 1. Ekspresi "<<endl;
-	cout<<" 2. Settings "<<endl;
+	cout<<" 2. Settings (Set) "<<endl;
 	cout<<"Mode yang dipilih : ";
 	cin>>Mode;
 	c.setMode(Mode);
 	if (c.getMode() == 2) {
 		cout<<" Masukan command : ";
-		cin>>cmd;
-		c.executeCommand(cmd);
-		c.setMode(1);
-		cout<<" Masukan command untuk mode ekspresi : ";
 		cin>>cmd;
 		c.executeCommand(cmd);
 	}
