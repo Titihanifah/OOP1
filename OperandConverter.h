@@ -12,6 +12,7 @@
 #include <string>
 #include <sstream>
 #include "RomanNumber.h"
+#include "LogicNumber.h"
 
 class OperandConverter
 {

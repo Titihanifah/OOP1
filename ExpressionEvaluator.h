@@ -7,11 +7,13 @@ private:
 	string temp;
 	string expression;
 	int opFlag;
-	int isOperator(char in);
+	int isOperatorArith(char in);
+	int isOperatorLogic(char in);
 	
 public:	
 	ExpressionEvaluator();
-	int calculate();
+	int calculateArith();
+	int calculateLogic();
 };
 
 #endif
