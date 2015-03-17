@@ -41,8 +41,8 @@ class Calculator {
 		int getOperatorType();
 		int getNumberType();
 		int getExpressionType();
-		void executeCommand(string);
 		void setMode(int);
 		int getMode();
+		void executeCommand(string);
 };
 #endif

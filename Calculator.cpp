@@ -19,8 +19,8 @@ Calculator::Calculator(const Calculator& c) {
 	Mode = c.Mode;
 	CommandHistory cmdHistory;
 }	
-Calculator::~Calculator() {
-}
+Calculator::~Calculator() {}
+
 void Calculator::setOperatorType(int OT) {
 	OprType = OT;
 }
@@ -49,6 +49,7 @@ int Calculator::getMode() {
 
 void Calculator::executeCommand(string Cmd) {
 	string ekspresi, postfiks;
+	int hasil;
 	if (getMode() == 2) { // mode settings
 		if (Cmd == "Set") {
 			string input;
@@ -105,8 +106,7 @@ void Calculator::executeCommand(string Cmd) {
 					setExpressionType(PREFIKS_OPERATOR);
 					expConverter.setExpType(PREFIKS_OPERATOR);
 				}
-			}
-				
+			}	
 		}	
 	}
 	else if (getMode() == 1) {
@@ -124,8 +124,17 @@ void Calculator::executeCommand(string Cmd) {
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(ekspresi);
 			// hitung hasil
-			expEvaluator.setExpression(ekspresi);
-			int hasil = expEvaluator.calculateArith();
+			if (getOperatorType() == 1) { // operator arith
+				expEvaluator.setExpression(ekspresi);
+				hasil = expEvaluator.calculateArith();
+				cout<<"B";
+				cout<<" Hasil : "<<hasil<<endl;
+			}
+			else if (getOperatorType() == 2) { // operator logic
+				expEvaluator.setExpression(ekspresi);
+				hasil = expEvaluator.calculateLogic();
+				cout<<" Hasil : "<<hasil<<endl;
+			}
 		}	
 	}
 	if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'm' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {

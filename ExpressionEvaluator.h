@@ -1,5 +1,7 @@
 #ifndef __EXPRESSION_EVALUATOR__
 #define __EXPRESSION_EVALUATOR__
+#include <string>
+using namespace std;
 
 class ExpressionEvaluator{
 private:

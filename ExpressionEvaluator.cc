@@ -27,15 +27,15 @@ void ExpressionEvaluator::setExpression(string input)
 
 int ExpressionEvaluator::isOperatorLogic(char in)
 {
-	if(in == "&") return 1;
-	if(in == "|") return 1;
-	if(in == "!") return 1;
-	if(in == "&") return 1;
-	if(in == "^") return 1;
+	if(in == '&') return 1;
+	if(in == '|') return 1;
+	if(in == '!') return 1;
+	if(in == '&') return 1;
+	if(in == '^') return 1;
 	return 0;
 }	
 
-int ExpressionEvaluator::calculateArith()
+int ExpressionEvaluator::calculateLogic()
 {
 	opFlag=0;
 	for (int i=0;i<expression.length();i++){

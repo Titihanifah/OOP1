@@ -1,4 +1,4 @@
 make :
-	g++ -o a CommandHistory.cpp ExpressionConverter.cpp ExpressionEvaluator.cpp LogicNumber.cpp OperandConverter.cpp RomanNumber.cpp mCalculator.cpp 
+	g++ -o a CommandHistory.cc ExpressionConverter.cpp ExpressionEvaluator.cc LogicNumber.cpp OperandConverter.cc RomanNumber.cpp Calculator.cpp mCalculator.cpp 
 run :
 	a
