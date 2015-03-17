@@ -107,7 +107,7 @@ void Calculator::executeCommand(string Cmd) {
 				}
 			}
 				
-		}
+		}	
 	}
 	else if (getMode() == 1) {
 		if (Cmd == ekspresi) {
@@ -122,10 +122,10 @@ void Calculator::executeCommand(string Cmd) {
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
-			postfiks = expConverter.toPostfiks(ekspresi);
+			postfiks = expConverter.toPostfix(ekspresi);
 			// hitung hasil
 			expEvaluator.setExpression(ekspresi);
-			int hasil = expEvaluator.calculate();
+			int hasil = expEvaluator.calculateArith();
 		}	
 	}
 	if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'm' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
