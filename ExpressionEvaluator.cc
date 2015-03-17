@@ -25,6 +25,9 @@ int ExpressionEvaluator::isOperatorLogic(char in)
 	if(in == '|') return 1;
 	if(in == '!') return 1;
 	if(in == '^') return 1;
+	if(in == '>') return 1;
+	if(in == '<') return 1;
+	if(in == '=') return 1;
 	return 0;
 }	
 
@@ -43,6 +46,9 @@ int ExpressionEvaluator::calculateLogic()
 				case '|': st.push(a || b); break;
 				case '!': st.push(!a); break;
 				case '^': st.push(a ^ b); break;
+				case '>': st.push( b > a);break;
+				case '<': st.push(b < a);break;
+				case '=': st.push(a == b);break;
 			}
 		}
 		else if(expression[i]==' '){

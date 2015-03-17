@@ -13,7 +13,7 @@ int main()
 	ee.setExpression("5 3 32 4 + * /");
 	int res = ee.calculateArith();
 	printf("arith=%d\n",res);
-	ee.setExpression("1 0 & ! 0 1 | ^");
+	ee.setExpression("3 4 < 5 ! |");
 	res= ee.calculateLogic();
 	printf("logic=%d\n",res);
 	return 0;

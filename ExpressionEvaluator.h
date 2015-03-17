@@ -1,8 +1,6 @@
 #ifndef __EXPRESSION_EVALUATOR__
 #define __EXPRESSION_EVALUATOR__
 #include <string>
-using namespace std;
-
 #include <cstdio>
 #include <cstring>
 #include <string>
@@ -20,10 +18,8 @@ private:
 	
 public:	
 	ExpressionEvaluator();
-	void setExpression(string input); // setEkspresi
 	int calculateArith();
 	int calculateLogic();
 	void setExpression(string);
 };
-
 #endif
