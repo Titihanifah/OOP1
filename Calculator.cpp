@@ -107,7 +107,7 @@ void Calculator::executeCommand(string Cmd) {
 				}
 			}
 				
-		}
+		}	
 	}
 	else if (getMode() == 1) {
 		if (Cmd == ekspresi) {
@@ -122,7 +122,7 @@ void Calculator::executeCommand(string Cmd) {
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
-			postfiks = expConverter.toPostfiks(ekspresi);
+			postfiks = expConverter.toPostfix(ekspresi);
 			// hitung hasil
 			expEvaluator.setExpression(ekspresi);
 			int hasil = expEvaluator.calculate();
