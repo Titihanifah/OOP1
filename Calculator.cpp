@@ -8,6 +8,9 @@ Calculator::Calculator() {
 	ExpType = 1;
 	Mode = 1;
 	CommandHistory cmdHistory;
+	OperandConverter oprConverter;
+	ExpressionConverter expConverter;
+	ExpressionEvaluator expEvaluator;
 }
 Calculator::Calculator(const Calculator& c) {
 	OprType = c.OprType;
@@ -45,62 +48,88 @@ int Calculator::getMode() {
 }
 
 void Calculator::executeCommand(string Cmd) {
-	if (Cmd == "Set") {
-		string input;
-		cout<<"Ketik 'opr' untuk set operator"<<endl;
-		cout<<"Ketik 'num' untuk set number"<<endl;
-		cout<<"Ketik 'exp' untuk set expression"<<endl;
-		cin>> input;
-		if (input == "opr") {
-			string inputopr;
-			cout<<"Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
-			cout<<"Ketik 'logic' untuk set operator menjadi logika"<<endl;
-			cout<<"Ketik 'rel' untuk set operator menjadi relational"<<endl;
-			cin>> inputopr;
-			cmdHistory.putCommand(inputopr);
-			if (inputopr == "arith") {
-				setOperatorType(ARITMATIKA_OPERATOR);
+	string eksepresi, out, postfiks;
+	if (getMode() == 2) {
+		if (Cmd == "Set") {
+			string input;
+			cout<<"Ketik 'opr' untuk set operator"<<endl;
+			cout<<"Ketik 'num' untuk set number"<<endl;
+			cout<<"Ketik 'exp' untuk set expression"<<endl;
+			cin>> input;
+			if (input == "opr") {
+				string inputopr;
+				cout<<"Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
+				cout<<"Ketik 'logic' untuk set operator menjadi logika"<<endl;
+				cout<<"Ketik 'rel' untuk set operator menjadi relational"<<endl;
+				cin>> inputopr;
+				cmdHistory.putCommand(inputopr);
+				if (inputopr == "arith") {
+					setOperatorType(ARITMATIKA_OPERATOR);
+				}
+				else if (inputopr == "logic") { 
+					setOperatorType(LOGIKA_OPERATOR);
+				}
+				else if (inputopr == "rel") {
+					setOperatorType(RELATIONAL_OPERATOR);
+				}
 			}
-			else if (inputopr == "logic") { 
-				setOperatorType(LOGIKA_OPERATOR);
+			else if (input == "num") {
+				string inputnum;
+				cout<<"Ketik 'arabic' untuk set number menjadi arabic"<<endl;
+				cout<<"Ketik 'roman' untuk set number menjadi romawi"<<endl;
+				cin>>inputnum;
+				cmdHistory.putCommand(inputnum);
+				if (inputnum == "arabic") { 
+					setNumberType(ARABIC_NUMBER);
+				}
+				else if (inputnum == "roman") {
+					setNumberType(ROMAWI_NUMBER);
+				}
 			}
-			else if (inputopr == "rel") {
-				setOperatorType(RELATIONAL_OPERATOR);
+			else if (input == "exp") {
+				string inputexp;
+				cout<<"Ketik 'post' untuk set number menjadi postfiks"<<endl;
+				cout<<"Ketik 'pref' untuk set number menjadi prefiks"<<endl;
+				cout<<"Ketik 'in' untuk set number menjadi infiks"<<endl;
+				cin>>inputexp;
+				cmdHistory.putCommand(inputexp);
+				if (inputexp == "post") {
+					setExpressionType(POSTFIKS_OPERATOR);
+					expConverter.setExpType(POSTFIKS_OPERATOR);
+				}
+				else if (inputexp == "in") { 
+					setExpressionType(INFIKS_OPERATOR);
+					expConverter.setExpType(INFIKS_OPERATOR);
+				}
+				else if (inputexp == "pref") { 
+					setExpressionType(PREFIKS_OPERATOR);
+					expConverter.setExpType(PREFIKS_OPERATOR);
+				}
 			}
+				
 		}
-		else if (input == "num") {
-			string inputnum;
-			cout<<"Ketik 'arabic' untuk set number menjadi arabic"<<endl;
-			cout<<"Ketik 'roman' untuk set number menjadi romawi"<<endl;
-			cin>>inputnum;
-			cmdHistory.putCommand(inputnum);
-			if (inputnum == "arabic") { 
-				setNumberType(ARABIC_NUMBER);
-			}
-			else if (inputnum == "roman") {
-				setNumberType(ROMAWI_NUMBER);
-			}
-		}
-		else if (input == "exp") {
-			string inputexp;
-			cout<<"Ketik 'post' untuk set number menjadi postfiks"<<endl;
-			cout<<"Ketik 'pref' untuk set number menjadi prefiks"<<endl;
-			cout<<"Ketik 'in' untuk set number menjadi infiks"<<endl;
-			cin>>inputexp;
-			cmdHistory.putCommand(inputexp);
-			if (inputexp == "post") {
-				setExpressionType(POSTFIKS_OPERATOR);
-			}
-			else if (inputexp == "in") { 
-				setExpressionType(INFIKS_OPERATOR);
-			}
-			else if (inputexp == "pref") { 
-				setExpressionType(PREFIKS_OPERATOR);
-			}
-		}
-			
 	}
-	else if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'm' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
+	else if (getMode() == 1) {
+		if (Cmd == ekspresi) {
+			cmdHistory.putCommand(Cmd);
+			cout<<"Masukan ekspresi : "<<endl;
+			cin>>ekspresi;
+			if (getNumberType() == ROMAWI_NUMBER) {
+				// ubah operand ke arabic
+				oprConverter.setExpression(ekspresi);
+				ekspresi = oprConverter.toArabicExpression();
+			}
+			// ubah ekspresi ke postfiks
+			expConverter.ExpressionConverter ec;
+			int exp = getExpType();
+			ec.setExpType(exp);
+			postfiks = ec.toPostfiks(ekspresi);
+			// hitung hasil
+			expEvaluator.setExpression(ekspresi);
+			int hasil = expEvaluator.calculate();
+		}	
+	}
+	if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'm' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
 		cmdHistory.putCommand(Cmd);
 		char* s = (char*) Cmd.c_str();
 		int n;

@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include "CommandHistory.h"
+#include "OperandConverter.h"
+#include "ExpressionConverter.h"
+#include "ExpressionEvaluator.h"
 using namespace std;
 
 class Calculator {
@@ -13,6 +16,9 @@ class Calculator {
 		int ExpType;
 		int Mode;
 		CommandHistory cmdHistory;
+		OperandConverter oprConverter;
+		ExpressionConverter expConverter;
+		ExpressionEvaluator expEvaluator;
 	public :
 		Calculator();//ctor
 		Calculator(const Calculator&);//cctor

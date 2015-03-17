@@ -25,12 +25,12 @@ int ExpressionConverter::OperatorPrecedence(char op) {
 }
 
 string ExpressionConverter::toPostfix(string expression) {
-	if (exp_type == 2)
+	if (exp_type == POSTFIKS_OPERATOR)
 	{
 		return expression;
 	}
 	string postfix = "";
-	if (exp_type == 0) /* 0 berarti prefix */
+	if (exp_type == PREFIKS_OPERATOR) /* 0 berarti prefix */
 	{
 		Stack<string> S;
 		string oprnd = "";
@@ -64,7 +64,7 @@ string ExpressionConverter::toPostfix(string expression) {
 		}
 		S.pop(postfix);
 	}
-	else if (exp_type == 1) /* 1 berarti infix */
+	else if (exp_type == INFIKS_OPERATOR) /* 1 berarti infix */
 	{
 		Stack<char> S;
 		string stemp = "";
