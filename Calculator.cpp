@@ -49,7 +49,7 @@ int Calculator::getMode() {
 
 void Calculator::executeCommand(string Cmd) {
 	string ekspresi, postfiks;
-	if (getMode() == 2) {
+	if (getMode() == 2) { // mode settings
 		if (Cmd == "Set") {
 			string input;
 			cout<<"Ketik 'opr' untuk set operator"<<endl;
