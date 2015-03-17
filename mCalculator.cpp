@@ -2,7 +2,7 @@
 #include "Calculator.h"
 
 int main() {
-	Calculator c;
+	Calculator c; //ctor
 	int Mode;
 	string cmd, exp;
 	system("CLS");

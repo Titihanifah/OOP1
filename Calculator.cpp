@@ -150,7 +150,7 @@ void Calculator::executeCommand(string Cmd) {
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
-				cout<<postfiks<<endl;
+				//cout<<postfiks<<endl;
 				hasil = expEvaluator.calculateArith();
 				cout<<" Hasil : "<<hasil<<endl;
 				cout<<"----------------------------------------------------------------------------------------------"<<endl;
