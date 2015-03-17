@@ -1,7 +1,7 @@
 /* Calculator.cpp */
 #include "Calculator.h"
 using namespace std;
-
+//ctor
 Calculator::Calculator() {
 	OprType = 1;
 	NumType = 1;

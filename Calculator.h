@@ -15,6 +15,7 @@ class Calculator {
 		int NumType;
 		int ExpType;
 		int Mode;
+		//objek
 		CommandHistory cmdHistory;
 		OperandConverter oprConverter;
 		ExpressionConverter expConverter;

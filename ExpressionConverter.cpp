@@ -30,7 +30,7 @@ string ExpressionConverter::toPostfix(string expression) {
 		return expression;
 	}
 	string postfix = "";
-	if (exp_type == PREFIKS_OPERATOR) /* 0 berarti prefix */
+	if (exp_type == PREFIKS_OPERATOR) 
 	{
 		Stack<string> S;
 		string oprnd = "";
