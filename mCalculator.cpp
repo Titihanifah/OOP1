@@ -1,4 +1,4 @@
-/* mCalculator */
+/* nama : mCalculator */
 #include "Calculator.h"
 
 int main() {
