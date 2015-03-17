@@ -10,7 +10,7 @@ private:
 	int isOperator(char in);
 	
 public:	
-	ExpressionEvaluator(string input);
+	ExpressionEvaluator();
 	int calculate();
 };
 

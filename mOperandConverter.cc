@@ -8,7 +8,8 @@ using namespace std;
 int main()
 {
 	string in("XL + X / C");
-	OperandConverter op(in);
+	OperandConverter op;
+	op.setExpression(in);
 	string out = op.toArabicExpression();
 	printf("%s\n",out.c_str());
 	

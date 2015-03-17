@@ -9,7 +9,8 @@ using namespace std;
 
 int main()
 {
-	ExpressionEvaluator ee("5 3 32 4 + * /");
+	ExpressionEvaluator ee;
+	e.setExpression("5 3 32 4 + * /");
 	int res = ee.calculate();
 	printf("%d\n",res);
 	return 0;

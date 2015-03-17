@@ -17,7 +17,10 @@ int ExpressionEvaluator::isOperator(char in)
 		return 0;
 	}
 	
-ExpressionEvaluator::ExpressionEvaluator(string input)
+ExpressionEvaluator::ExpressionEvaluator()
+{}
+
+void ExpressionEvaluator::setExpression(string input)
 {
 	expression = input;
 }

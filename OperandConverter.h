@@ -1,3 +1,9 @@
+//!  A class to change types of Operands
+/*!
+	Numbers in an expression is converted into Arabic Number which is
+	a normal primitive integer
+*/
+
 #ifndef __OPERAND_CONVERTER__
 #define __OPERAND_CONVERTER__
 
@@ -7,17 +13,6 @@
 #include <sstream>
 #include "RomanNumber.h"
 
-/************************************************************
-
-Class OperandConverter (string)
-
-Pre - condition : romawi string
-
-Methods:
-- toArabicExpression()  -  return string containing arabic expression
-
-*************************************************************/
-
 class OperandConverter
 {
 private:
@@ -25,8 +20,16 @@ private:
 	int isOperator(char in);
 	
 public:
-	OperandConverter(string in);
+	//! OperandConverter constructor.
+    /*!
+		Takes in expression in string which is NOT an Arabic Expression ( Expression containing primitive integer )
+    */
+	OperandConverter();
+	
+	//! A function which returns string containing expression in Arabic ( primitive integer )
 	string toArabicExpression();
+	
+	void setExpression(string in);
 };
 
 #endif

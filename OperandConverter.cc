@@ -1,7 +1,10 @@
 #include "OperandConverter.h"
 using namespace std;
 
-OperandConverter::OperandConverter(string in)
+OperandConverter::OperandConverter()
+{}
+
+void OperandConverter::setExpression(string in)
 {
 	romawiExpression = in;
 }
