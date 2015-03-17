@@ -53,63 +53,73 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 2) { // mode settings
 		if (Cmd == "Set") {
 			string input;
-			cout<<"Ketik 'opr' untuk set operator"<<endl;
-			cout<<"Ketik 'num' untuk set number"<<endl;
-			cout<<"Ketik 'exp' untuk set expression"<<endl;
-			cin>> input;
-			if (input == "opr") {
-				string inputopr;
-				cout<<"Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
-				cout<<"Ketik 'logic' untuk set operator menjadi logika"<<endl;
-				cout<<"Ketik 'rel' untuk set operator menjadi relational"<<endl;
-				cin>> inputopr;
-				cmdHistory.putCommand(inputopr);
-				if (inputopr == "arith") {
-					setOperatorType(ARITMATIKA_OPERATOR);
+			for (int i = 1 ; i <= 3; i++) {
+				cout<<"Ketik 'opr' untuk set operator"<<endl;
+				cout<<"Ketik 'num' untuk set number"<<endl;
+				cout<<"Ketik 'exp' untuk set expression"<<endl;
+				cin>> input;
+				if (input == "opr") {
+					string inputopr;
+					cout<<"Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
+					cout<<"Ketik 'logic' untuk set operator menjadi logika"<<endl;
+					cout<<"Ketik 'rel' untuk set operator menjadi relational"<<endl;
+					cin>> inputopr;
+					cmdHistory.putCommand(inputopr);
+					if (inputopr == "arith") {
+						setOperatorType(ARITMATIKA_OPERATOR);
+						i = i;
+					}
+					else if (inputopr == "logic") { 
+						setOperatorType(LOGIKA_OPERATOR);
+						i = i;
+					}
+					else if (inputopr == "rel") {
+						setOperatorType(RELATIONAL_OPERATOR);
+						i = i;
+					}
 				}
-				else if (inputopr == "logic") { 
-					setOperatorType(LOGIKA_OPERATOR);
+				if (input == "num") {
+					string inputnum;
+					cout<<"Ketik 'arabic' untuk set number menjadi arabic"<<endl;
+					cout<<"Ketik 'roman' untuk set number menjadi romawi"<<endl;
+					cin>>inputnum;
+					cmdHistory.putCommand(inputnum);
+					if (inputnum == "arabic") { 
+						setNumberType(ARABIC_NUMBER);
+						i = i;
+					}
+					else if (inputnum == "roman") {
+						setNumberType(ROMAWI_NUMBER);
+						i = i;
+					}
 				}
-				else if (inputopr == "rel") {
-					setOperatorType(RELATIONAL_OPERATOR);
+				if (input == "exp") {
+					string inputexp;
+					cout<<"Ketik 'post' untuk set number menjadi postfiks"<<endl;
+					cout<<"Ketik 'pref' untuk set number menjadi prefiks"<<endl;
+					cout<<"Ketik 'in' untuk set number menjadi infiks"<<endl;
+					cin>>inputexp;
+					cmdHistory.putCommand(inputexp);
+					if (inputexp == "post") {
+						setExpressionType(POSTFIKS_OPERATOR);
+						expConverter.setExpType(POSTFIKS_OPERATOR);
+						i = i;
+					}
+					else if (inputexp == "in") { 
+						setExpressionType(INFIKS_OPERATOR);
+						expConverter.setExpType(INFIKS_OPERATOR);
+						i = i;
+					}
+					else if (inputexp == "pref") { 
+						setExpressionType(PREFIKS_OPERATOR);
+						expConverter.setExpType(PREFIKS_OPERATOR);
+						i = i;
+					}
 				}
 			}
-			else if (input == "num") {
-				string inputnum;
-				cout<<"Ketik 'arabic' untuk set number menjadi arabic"<<endl;
-				cout<<"Ketik 'roman' untuk set number menjadi romawi"<<endl;
-				cin>>inputnum;
-				cmdHistory.putCommand(inputnum);
-				if (inputnum == "arabic") { 
-					setNumberType(ARABIC_NUMBER);
-				}
-				else if (inputnum == "roman") {
-					setNumberType(ROMAWI_NUMBER);
-				}
-			}
-			else if (input == "exp") {
-				string inputexp;
-				cout<<"Ketik 'post' untuk set number menjadi postfiks"<<endl;
-				cout<<"Ketik 'pref' untuk set number menjadi prefiks"<<endl;
-				cout<<"Ketik 'in' untuk set number menjadi infiks"<<endl;
-				cin>>inputexp;
-				cmdHistory.putCommand(inputexp);
-				if (inputexp == "post") {
-					setExpressionType(POSTFIKS_OPERATOR);
-					expConverter.setExpType(POSTFIKS_OPERATOR);
-				}
-				else if (inputexp == "in") { 
-					setExpressionType(INFIKS_OPERATOR);
-					expConverter.setExpType(INFIKS_OPERATOR);
-				}
-				else if (inputexp == "pref") { 
-					setExpressionType(PREFIKS_OPERATOR);
-					expConverter.setExpType(PREFIKS_OPERATOR);
-				}
-			}	
 		}	
 	}
-	else if (getMode() == 1) {
+	if (getMode() == 1) {
 		if (Cmd == ekspresi) {
 			cmdHistory.putCommand(Cmd);
 			cout<<"Masukan ekspresi : ";

@@ -4,7 +4,7 @@
 int main() {
 	Calculator c;
 	int Mode;
-	string cmd;
+	string cmd, exp;
 	cout<<" Masukan mode calculator : "<<endl;
 	cout<<" 1. Ekspresi "<<endl;
 	cout<<" 2. Settings (Set) "<<endl;
@@ -15,6 +15,8 @@ int main() {
 		cout<<" Masukan command : ";
 		cin>>cmd;
 		c.executeCommand(cmd);
+		c.setMode(1);
+		c.executeCommand(exp);
 	}
 	else if (c.getMode() == 1) {
 		c.executeCommand(cmd);
