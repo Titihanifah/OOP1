@@ -23,6 +23,7 @@ class OperandConverter
 private:
 	string romawiExpression;
 	int isOperator(char in);
+	Calculator* calculator;
 	
 public:
 	//! OperandConverter constructor.
