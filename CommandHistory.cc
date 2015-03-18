@@ -69,7 +69,7 @@ void CommandHistory::showMem(int n)
 		string temp;
 		saveStack.pop(temp);
 		tempStack.push(temp);
-		printf("%s\n",temp.c_str());
+		printf(" - %s\n",temp.c_str());
 		n--;
 	}
 	
@@ -92,9 +92,9 @@ void CommandHistory::showAll()
 		string temp;
 		saveStack.pop(temp);
 		tempStack.push(temp);
-		printf("%s\n",temp.c_str());
+		printf("  -    %s\n",temp.c_str());
 	}
-	
+	printf("\n");
 	// popping back all histories back into save Stack
 	while(!tempStack.isEmpty())
 	{
@@ -107,7 +107,7 @@ void CommandHistory::showAll()
 void CommandHistory::save()
 {
 	// requesting filename for user's output file
-	printf("Filename : ");
+	printf("  Filename : ");
 	char temp[100];
 	scanf("%s",temp);
 	string filename = temp;
