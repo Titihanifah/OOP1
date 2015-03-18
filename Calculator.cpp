@@ -161,9 +161,9 @@ void Calculator::executeCommand(string Cmd) {
 				//cout<<postfiks<<endl;
 				hasil = expEvaluator.calculateArith();
 				if (getNumberType() == ROMAWI_NUMBER) {
-					RomanNumber rom;
-					romnum.append(rom.toRomanNumber(hasil));
-					cout<<" Hasil : "<<romnum<<endl;
+					//RomanNumber rom;
+					//romnum.append(rom.toRomanNumber(hasil));
+					cout<<" Hasil : "<<hasil<<endl;
 					string temp = " = "; temp.append(romnum);
 					cmdHistory.putCommand(Cmd.append(temp));
 				}
