@@ -47,6 +47,7 @@ int Calculator::getMode() {
 	return Mode;
 }
 
+
 int Calculator::isExpression(string in) {
 	if(in[0] ==  'S'  && in[1] ==  'h' && in[2] ==  'o' && in[3] !=  'w' && in[4] ==  'M' && in[5] !=  'e' && in[6] ==  'm') {
 		return 0;
@@ -60,6 +61,82 @@ int Calculator::isExpression(string in) {
 		return 0;
 	} else {
 		return 1;
+		
+void undo(int n)
+{
+	while (! cmdHistory.redoStack.isEmpty()) // redo is just for the last undo
+	{
+		cmdHistory.redoStack.pop(temp);
+	}
+	for (int i=0;i<n;i++)
+	{
+		string temp;
+		cmdHistory.undoStack.pop(temp);
+		cmdHistory.redoStack.push(temp);
+		char* ttemp =(char*) temp.c_str();
+		char* tttemp;
+		sscanf(ttemp,"%s",tttemp);
+		if (strcmp(ttemp,"SET") == 0)
+		{
+			sscanf(ttemp,"%s",tttemp);
+			if (strcmp(ttemp,"opr") == 0)
+			{
+				sscanf(ttemp,"%s",tttemp);
+				if (strcmp(ttemp,"arith") == 0) setOperatorType(ARITMATIKA_OPERATOR);
+				if (strcmp(ttemp,"logic") == 0) setOperatorType(LOGIKA_OPERATOR);
+				if (strcmp(ttemp,"rel") == 0) setOperatorType(RELATIONAL_OPERATOR);
+			}
+			else if (strcmp(ttemp,"num") == 0)
+			{
+				sscanf(ttemp,"%s",tttemp);
+				if (strcmp(ttemp,"arabic") == 0) setNumberType(ARABIC_NUMBER);
+				if (strcmp(ttemp,"roman") == 0) setNumberType(ROMAWI_NUMBER);
+			}
+			else if (strcmp(ttemp,"exp") == 0)
+			{
+				sscanf(ttemp,"%s",tttemp);
+				if (strcmp(ttemp,"post") == 0) setExpressionType(POSTFIKS_OPERATOR);
+				if (strcmp(ttemp,"in") == 0) setExpressionType(INFIKS_OPERATOR);
+				if (strcmp(ttemp,"pref") == 0) setExpressionType(PREFIKS_OPERATOR);
+			}
+		}
+	}
+}
+
+void redo(int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		string temp;
+		cmdHistory.redoStack.pop(temp);
+		cmdHistory.undoStack.push(temp);
+		char* ttemp =(char*) temp.c_str();
+		char* tttemp;
+		sscanf(ttemp,"%s",tttemp);
+		if (strcmp(ttemp,"SET") == 0)
+		{
+			sscanf(ttemp,"%s",tttemp);
+			if (strcmp(ttemp,"opr") == 0)
+			{
+				sscanf(ttemp,"%s",tttemp);
+				if (strcmp(ttemp,"arith") == 0) setOperatorType(ARITMATIKA_OPERATOR);
+				if (strcmp(ttemp,"logic") == 0) setOperatorType(LOGIKA_OPERATOR);
+				if (strcmp(ttemp,"rel") == 0) setOperatorType(RELATIONAL_OPERATOR);
+			}
+			else if (strcmp(ttemp,"num") == 0)
+			{
+				sscanf(ttemp,"%s",tttemp);
+				if (strcmp(ttemp,"arabic") == 0) setNumberType(ARABIC_NUMBER);
+				if (strcmp(ttemp,"roman") == 0) setNumberType(ROMAWI_NUMBER);
+			}
+			else if (strcmp(ttemp,"exp") == 0)
+			{
+				sscanf(ttemp,"%s",tttemp);
+				if (strcmp(ttemp,"post") == 0) setExpressionType(POSTFIKS_OPERATOR);
+				if (strcmp(ttemp,"in") == 0) setExpressionType(INFIKS_OPERATOR);
+				if (strcmp(ttemp,"pref") == 0) setExpressionType(PREFIKS_OPERATOR);
+			}
+		}	
 	}
 }
 
@@ -204,88 +281,48 @@ void Calculator::executeCommand(string Cmd) {
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
-				
-				for (int i=0;i<n;i++)
-				{
-					string temp;
-					cmdHistory.redoStack.pop(temp);
-					cmdHistory.undoStack.push(temp);
-					char* ttemp =(char*) temp.c_str();
-					char* tttemp;
-					sscanf(ttemp,"%s",tttemp);
-					if (strcmp(ttemp,"SET") == 0)
-					{
-						sscanf(ttemp,"%s",tttemp);
-						if (strcmp(ttemp,"opr") == 0)
-						{
-							sscanf(ttemp,"%s",tttemp);
-							if (strcmp(ttemp,"arith") == 0) setOperatorType(ARITMATIKA_OPERATOR);
-							if (strcmp(ttemp,"logic") == 0) setOperatorType(LOGIKA_OPERATOR);
-							//if (strcmp(ttemp,"rel") == 0) setOperatorType(RELATIONAL_OPERATOR);
-						}
-						else if (strcmp(ttemp,"num") == 0)
-						{
-							sscanf(ttemp,"%s",tttemp);
-							if (strcmp(ttemp,"arabic") == 0) setNumberType(ARABIC_NUMBER);
-							if (strcmp(ttemp,"roman") == 0) setNumberType(ROMAWI_NUMBER);
-						}
-						else if (strcmp(ttemp,"exp") == 0)
-						{
-							sscanf(ttemp,"%s",tttemp);
-							if (strcmp(ttemp,"post") == 0) setExpressionType(POSTFIKS_OPERATOR);
-							if (strcmp(ttemp,"in") == 0) setExpressionType(INFIKS_OPERATOR);
-							if (strcmp(ttemp,"pref") == 0) setExpressionType(PREFIKS_OPERATOR);
-						}
-					}	
-				}
-				
-				//cmdHistory.redo(n);
 			}
 			else if ((Cmd[0] ==  'U' || Cmd[0] ==  'u') && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
-				
-				for (int i=0;i<n;i++)
-				{
-					string temp;
-					cmdHistory.undoStack.pop(temp);
-					cmdHistory.redoStack.push(temp);
-					char* ttemp =(char*) temp.c_str();
-					char* tttemp;
-					sscanf(ttemp,"%s",tttemp);
-					if (strcmp(ttemp,"SET") == 0)
-					{
-						sscanf(ttemp,"%s",tttemp);
-						if (strcmp(ttemp,"opr") == 0)
-						{
-							sscanf(ttemp,"%s",tttemp);
-							if (strcmp(ttemp,"arith") == 0) setOperatorType(ARITMATIKA_OPERATOR);
-							if (strcmp(ttemp,"logic") == 0) setOperatorType(LOGIKA_OPERATOR);
-							//if (strcmp(ttemp,"rel") == 0) setOperatorType(RELATIONAL_OPERATOR);
-						}
-						else if (strcmp(ttemp,"num") == 0)
-						{
-							sscanf(ttemp,"%s",tttemp);
-							if (strcmp(ttemp,"arabic") == 0) setNumberType(ARABIC_NUMBER);
-							if (strcmp(ttemp,"roman") == 0) setNumberType(ROMAWI_NUMBER);
-						}
-						else if (strcmp(ttemp,"exp") == 0)
-						{
-							sscanf(ttemp,"%s",tttemp);
-							if (strcmp(ttemp,"post") == 0) setExpressionType(Calculator::POSTFIKS_OPERATOR);
-							if (strcmp(ttemp,"in") == 0) setExpressionType(Calculator::INFIKS_OPERATOR);
-							if (strcmp(ttemp,"pref") == 0) setExpressionType(Calculator::PREFIKS_OPERATOR);
-						}
-					}
-				}
-				//cmdHistory.undo(n);
 			}
 			else if (Cmd ==  "Save") {
 				cmdHistory.putCommand(Cmd);
 				cmdHistory.save();
 			}
 		}
+	}
+	if (Cmd[0] ==  'S' && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
+		cmdHistory.putCommand(Cmd);
+		char* s = (char*) Cmd.c_str();
+		int n;
+		sscanf("%s %d" , s, n);
+		cmdHistory.showMem(n);
+	}
+	else if (Cmd ==  "ShowAll") {
+		cmdHistory.putCommand(Cmd);
+		cmdHistory.showAll();
+	}
+	else if (Cmd[0] ==  'R' && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
+		cmdHistory.putCommand(Cmd);
+		char* s = (char*) Cmd.c_str();
+		int n;
+		sscanf("%s %d" , s, n);
+		
+		redo(n);
+	}
+	else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
+		cmdHistory.putCommand(Cmd);
+		char* s = (char*) Cmd.c_str();
+		int n;
+		sscanf("%s %d" , s, n);
+		
+		undo(n);
+	}
+	else if (Cmd ==  "Save") {
+		cmdHistory.putCommand(Cmd);
+		cmdHistory.save();
 	}
 }
