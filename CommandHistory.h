@@ -12,6 +12,7 @@
 #include <string>
 #include <fstream>
 #include "Stack.h"
+#include "Calculator.h"
 using namespace std;
 
 class CommandHistory
@@ -21,6 +22,10 @@ class CommandHistory
 private:
 	Stack<string> undoStack;
 	Stack<string> redoStack;
+	Stack<string> tempStack;
+	Stack<string> saveStack;
+	int isExpression(string in);
+	
 public:
 	//! CommandHistory constructor.
 	CommandHistory();

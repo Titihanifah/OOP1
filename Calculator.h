@@ -45,5 +45,9 @@ class Calculator {
 		void setMode(int);
 		int getMode();
 		void executeCommand(string);
+		void undo();
+		void undo(int);
+		void redo();
+		void redo(int);
 };
 #endif

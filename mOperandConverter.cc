@@ -8,7 +8,8 @@ using namespace std;
 int main()
 {
 	//string in("X / IX * VI + II / V");
-	string in("!true & !true ^ !false | false");
+	//string in("! true & ! true ^ ! false | false");
+	string in("V III -");
 	OperandConverter op;
 	op.setExpression(in);
 	string out = op.toArabicExpression();
