@@ -99,6 +99,7 @@ void Calculator::executeCommand(string Cmd) {
 						string inputnum;
 						cout<<"2.1 Ketik 'arabic' untuk set number menjadi arabic"<<endl;
 						cout<<"2.2 Ketik 'roman' untuk set number menjadi romawi"<<endl;
+						cout<<"2.3 Ketik 'logic' untuk set number menjadi logic"<<endl;
 						cout<<"----------------------------------------------------------------------------------------------"<<endl;
 						scanf("%s" , temp);
 						inputnum = temp;
@@ -109,6 +110,9 @@ void Calculator::executeCommand(string Cmd) {
 						}
 						else if (inputnum == "roman") {
 							setNumberType(ROMAWI_NUMBER);
+						}
+						else if (inputnum == "logic") {
+							setNumberType(LOGIC_NUMBER);
 						}
 					}
 					else if (input == "exp") {
