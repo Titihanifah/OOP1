@@ -199,6 +199,7 @@ void CommandHistory::undo(int n)
 				if (strcmp(ttemp,"pref") == 0) calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);
 			}
 		}
+		printf("successful\n");
 	}
 }
 

@@ -1,6 +1,6 @@
 /*!
  *  \author  Elvan Owen
- *  \date    1990-2011
+ *  \date    2015
  */
 
 #ifndef __OPERAND_CONVERTER__
@@ -19,16 +19,22 @@ class Calculator;
 
 //!  Class OperandConverter
 /*!
-	A class to change types of Operands
-	Numbers in an expression is converted into Arabic Number ( primitive integer )
+	A class to change the types of Operands in a given expression string.
+	Numbers in an expression is converted into Arabic Number ( primitive integer ) for easy calculation later on
+	I.S "VII + I - X"
+	F.S "7 + 1 - 10"
+
+	I.S "true & (false & ! true)"
+	F.S "1 & ( 0 & ! 1)"
 */
 class OperandConverter
 {
 private:
-	// string containing expression that will be converted
+	//! A string containing expression that will be operand - converted
 	string expression;
 	//! A function returning true if a character is an operator
 	int isOperator(char in);
+	//! A variable pointing to Calculator Object which contains this Object
 	Calculator* calculator;
 	
 public:
@@ -38,7 +44,7 @@ public:
     */
 	OperandConverter(Calculator* calculator);
 	
-	//! A function returning the string expression it holds into an Expression containing Arabic Number ( primitive integer )
+	//! A function returning changed expression into an Arabic Number expression
 	string toArabicExpression();
 	
 	//! A function that set the expression this object is holding

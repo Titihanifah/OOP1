@@ -23,14 +23,17 @@ class Calculator;
 */
 class CommandHistory
 {	
-	Stack<string> undoStack; /*!< stack holding user's SET commands that enables them to undo */
-	Stack<string> redoStack; /*!< stack holding user's SET which has been undone so that they can redo what they had undone */
-	Stack<string> tempStack; /*!< stack for holding temporary value while iterating through every elements inside another stack */
-	Stack<string> saveStack; /*!< stack holding every user's commands ( Expression and Set and Others ) that is used to be saved or displayed */
-	Calculator* calculator; /*!< Calculator Object which contains this Object */
-	/**
-	* a function returning true if input string is an expression
-	*/
+	//! A stack holding user's SET commands that will be used to undo
+	Stack<string> undoStack;
+	//! A stack holding user's SET commands that has been undone, so it can be redo
+	Stack<string> redoStack;
+	//! A stack holding temporary value for iterating and keeping old elements
+	Stack<string> tempStack;
+	//! A stack holding every user's commands ( Expression and Set and Others ) , used to be saved or displayed
+	Stack<string> saveStack;
+	//! A pointer to Calculator Object that contains this Object
+	Calculator* calculator;
+	//! A function returning true if input string is an expression
 	int isExpression(string);
 	
 public:

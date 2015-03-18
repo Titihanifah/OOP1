@@ -1,6 +1,6 @@
 /*!
  *  \author  Elvan Owen
- *  \date    1990-2011
+ *  \date    2015
  */
 
 #ifndef __EXPRESSION_EVALUATOR__
@@ -13,42 +13,44 @@
 #include "Stack.h"
 using namespace std;
 
-//!  ExpressionEvaluator class
+//!  Class ExpressionEvaluator
 /*!
-	A class to return values from a postfix-expression string
+	A class that return calculated values from a postfix-expression string
+	I.S "3 4 +"
+	F.S "7"
 */
 class ExpressionEvaluator{
-	Stack<int> st; /*!< stack holding values to calculate the value of an expression */
+	//! A stack holding values to calculate the value of an expression
+	Stack<int> st;
+	//! A string used to hold temporary current values while parsing expression
 	string temp;
+	//! A string containing the expression which will be calculated
 	string expression;
+	//! A variable that tells if previous character is an operator or an operand
 	int opFlag;
 	/**
-	* a function returning true if input character is an arithmetic operator ( + , - , * , % , / )
-	* @param in a character argument.
+	* A function returning true if input character is an arithmetic operator ( + , - , * , % , / )
 	*/
-	int isOperatorArith(char in);
+	int isOperatorArith(char);
 	
 	/**
-	* a function returning true if input character is a logical / relational operator ( & , ! , | , ^ , > , < , = )
-	* @param in a character argument.
+	* A function returning true if input character is a logical / relational operator ( & , ! , | , ^ , > , < , = )
 	*/
-	int isOperatorLogic(char in);
-	
+	int isOperatorLogic(char);
 public:	
-	
-	//!a Default Constructor 
+	//! A Default Constructor 
 	ExpressionEvaluator();
 	
-	//! a Constructor taking string input as a parameter representing the expression this object will holds
+	//! A Constructor taking a string as input parameter, representing the expression this object will calculates
 	ExpressionEvaluator(string);
 	
-	//! a function returning values of a postfix arithmetic - expression string this object is holding
+	//! A function returning calculated values of a postfix arithmetic - expression
 	int calculateArith();
 	
-	//! a function returning values of a postfix logical - expression string this object is holding
+	//! A function returning calculated values of a postfix logical - expression
 	int calculateLogic();
 	
-	//! a function that set the expression this object is holding
+	//! A function that sets current's expression to new expression
 	void setExpression(string);
 };
 #endif
