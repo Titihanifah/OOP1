@@ -133,7 +133,6 @@ void CommandHistory::undo(int n)
 				sscanf(ttemp,"%s",tttemp);
 				if (strcmp(ttemp,"arith") == 0) calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);
 				if (strcmp(ttemp,"logic") == 0) calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);
-				if (strcmp(ttemp,"rel") == 0) calculator->setOperatorType(Calculator::RELATIONAL_OPERATOR);
 			}
 			else if (strcmp(ttemp,"num") == 0)
 			{
@@ -170,7 +169,6 @@ void CommandHistory::redo(int n)
 				sscanf(ttemp,"%s",tttemp);
 				if (strcmp(ttemp,"arith") == 0) calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);
 				if (strcmp(ttemp,"logic") == 0) calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);
-				if (strcmp(ttemp,"rel") == 0) calculator->setOperatorType(Calculator::RELATIONAL_OPERATOR);
 			}
 			else if (strcmp(ttemp,"num") == 0)
 			{

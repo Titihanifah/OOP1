@@ -47,9 +47,6 @@ int Calculator::getMode() {
 	return Mode;
 }
 
-<<<<<<< HEAD
-=======
-
 int Calculator::isExpression(string in) {
 	if(in[0] ==  'S'  && in[1] ==  'h' && in[2] ==  'o' && in[3] !=  'w' && in[4] ==  'M' && in[5] !=  'e' && in[6] ==  'm') {
 		return 0;
@@ -63,6 +60,7 @@ int Calculator::isExpression(string in) {
 		return 0;
 	} else {
 		return 1;
+	}
 }		
 
 void Calculator::executeCommand(string Cmd) {
