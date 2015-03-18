@@ -21,7 +21,7 @@ int main()
 	//exp = "((2 + 3) * 5)";
 	//exp = "2 * (3 + 5)";	
 	//exp = "((28 - 7) % (3 + 4))";
-	exp = "(!(2 | 5) & 3)";
+	exp = "-24 > 3 & 4 < -7";
 	postfix = ec.toPostfix(exp);
 	cout << postfix << endl;
 	
