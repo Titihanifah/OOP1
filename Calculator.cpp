@@ -152,6 +152,7 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
+			//cout<<"A"<<endl;
 			oprConverter.setExpression(Cmd);
 			Cmd = oprConverter.toArabicExpression();
 			//cout<<"A"<<endl;
@@ -198,7 +199,8 @@ void Calculator::executeCommand(string Cmd) {
 			}
 		}
 		else if (isExpression(Cmd) == 0) { // bukan ekspresi
-			if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
+			cout<<"A"<<endl;
+			if (Cmd[0] ==  'S'  && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
 			cmdHistory.putCommand(Cmd);
 			char* s = (char*) Cmd.c_str();
 			int n;
@@ -209,13 +211,13 @@ void Calculator::executeCommand(string Cmd) {
 				cmdHistory.putCommand(Cmd);
 				cmdHistory.showAll();
 			}
-			else if ((Cmd[0] ==  'R' || Cmd[0] ==  'r') && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
+			else if (Cmd[0] ==  'R'  && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
 			}
-			else if ((Cmd[0] ==  'U' || Cmd[0] ==  'u') && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
+			else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;

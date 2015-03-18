@@ -54,6 +54,27 @@ int main() {
 		}
 		else {
 			c.executeCommand(cmd);
+			if(c.getOperatorType() == 1) {
+				cout<<"Setting Operator : Operator Aritmatika "<<endl;
+			} else {
+				cout<<"Setting Operator : Operator Logika dan Relasiona "<<endl;
+			}
+			if (c.getNumberType() == 1) {
+				cout<<"Setting Angka : Angka Arab "<<endl;
+			} else if (c.getNumberType() == 2) {
+				cout<<"Setting Angka : Angka Romawi "<<endl;
+			}
+			else {
+				cout<<"Logika"<<endl;
+			}
+			if (c.getExpressionType() == 1) {
+				cout<<"Setting Ekspresi : Infiks "<<endl<<endl;
+			} else if (c.getExpressionType() == 2) {
+				cout<<"Setting Ekspresi : Posfiks "<<endl<<endl;
+			}
+			else {
+				cout<<"Setting Ekspresi : Prefiks "<<endl<<endl;
+			}
 		}
 		//c.executeCommand(cmd);
 		if (cmd.compare("Set") == 0) {
