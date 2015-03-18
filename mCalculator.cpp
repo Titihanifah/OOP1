@@ -22,6 +22,9 @@ int main() {
 		c.executeCommand(exp);
 	}
 	else if (c.getMode() == 1) {
+		cout<<"Masukan command : ";
+		cin.ignore();
+		getline(cin,cmd); cout<<endl; cout<<endl;
 		c.executeCommand(cmd);
 
 	}

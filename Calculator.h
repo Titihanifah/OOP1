@@ -8,6 +8,7 @@
 #include "OperandConverter.h"
 #include "ExpressionConverter.h"
 #include "ExpressionEvaluator.h"
+#include "RomanNumber.h"
 using namespace std;
 
 class Calculator {
@@ -21,6 +22,8 @@ class Calculator {
 		OperandConverter oprConverter;
 		ExpressionConverter expConverter;
 		ExpressionEvaluator expEvaluator;
+		RomanNumber rom;
+		int isExpression(string in);
 	public :
 		Calculator();//ctor
 		Calculator(const Calculator&);//cctor
