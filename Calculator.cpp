@@ -145,6 +145,7 @@ void Calculator::executeCommand(string Cmd) {
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
+			//cout<<"A"<<endl;
 			postfiks = expConverter.toPostfix(ekspresi);
 			cout<<postfiks<<endl;
 			// hitung hasil
