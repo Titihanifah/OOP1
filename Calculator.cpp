@@ -147,11 +147,13 @@ void Calculator::executeCommand(string Cmd) {
 			expConverter.setExpType(exp);
 			//cout<<"A"<<endl;
 			postfiks = expConverter.toPostfix(ekspresi);
-			//cout<<postfiks<<endl;
+			cout<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
+
 				//cout<<postfiks<<endl;
+
 				hasil = expEvaluator.calculateArith();
 				cout<<" Hasil : "<<hasil<<endl;
 				cout<<"----------------------------------------------------------------------------------------------"<<endl;
