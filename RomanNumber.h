@@ -4,6 +4,10 @@
 using namespace std;
 #ifndef ROMANNUMBER_h
 #define ROMANNUMBER_h
+/**@brief Kelas turunan dari Number
+* Kelas RomanNumber digunakan untuk merepresentasi
+* objek yang bertipe angka romawi
+*/
 class RomanNumber :public Number{
 	private:
 	//data member
