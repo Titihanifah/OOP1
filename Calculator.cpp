@@ -6,7 +6,7 @@ Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = ARITMATIKA_OPERATOR;
 	NumType = ARABIC_NUMBER;
 	ExpType = INFIKS_OPERATOR;
-	Mode = 1;
+	//Mode = 1;
 	//CommandHistory cmdHistory;
 	//OperandConverter oprConverter;
 	//ExpressionConverter expConverter;
@@ -31,7 +31,7 @@ void Calculator::setExpressionType(int ET){
 	ExpType = ET;
 }
 int Calculator::getOperatorType() {
-	return OprType;
+	return  OprType;
 }
 int Calculator::getNumberType() {
 	return NumType;
@@ -99,6 +99,7 @@ void Calculator::executeCommand(string Cmd) {
 						string inputnum;
 						cout<<"2.1 Ketik 'arabic' untuk set number menjadi arabic"<<endl;
 						cout<<"2.2 Ketik 'roman' untuk set number menjadi romawi"<<endl;
+						cout<<"2.3 Ketik 'logic' untuk set number menjadi logic"<<endl;
 						cout<<"----------------------------------------------------------------------------------------------"<<endl;
 						scanf("%s" , temp);
 						inputnum = temp;
@@ -109,6 +110,9 @@ void Calculator::executeCommand(string Cmd) {
 						}
 						else if (inputnum == "roman") {
 							setNumberType(ROMAWI_NUMBER);
+						}
+						else if (inputnum == "logic") {
+							setNumberType(LOGIC_NUMBER);
 						}
 					}
 					else if (input == "exp") {
@@ -148,9 +152,10 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
-			
+			//cout<<"A"<<endl;
 			oprConverter.setExpression(Cmd);
 			Cmd = oprConverter.toArabicExpression();
+			//cout<<"A"<<endl;
 			//cout<<"opr converter : "<<Cmd<<endl;
 			
 			// ubah ekspresi ke postfiks
@@ -158,6 +163,7 @@ void Calculator::executeCommand(string Cmd) {
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(Cmd);
 			//cout<<"exp converter : "<<postfiks<<endl;
+			
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
@@ -166,7 +172,6 @@ void Calculator::executeCommand(string Cmd) {
 				if (getNumberType() == ROMAWI_NUMBER) {
 					RomanNumber rom;
 					romnum = rom.toRomanNumber(hasil);
-					//romnum.append(rom.toRomanNumber(hasil));
 					cout<<" Hasil : "<<romnum<<endl;
 					string temp = " = "; temp.append(romnum);
 					cmdHistory.putCommand(Cmd.append(temp));
@@ -194,7 +199,8 @@ void Calculator::executeCommand(string Cmd) {
 			}
 		}
 		else if (isExpression(Cmd) == 0) { // bukan ekspresi
-			if ((Cmd[0] ==  'S' || Cmd[0] ==  's') && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
+			cout<<"A"<<endl;
+			if (Cmd[0] ==  'S'  && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
 			cmdHistory.putCommand(Cmd);
 			char* s = (char*) Cmd.c_str();
 			int n;
@@ -205,13 +211,13 @@ void Calculator::executeCommand(string Cmd) {
 				cmdHistory.putCommand(Cmd);
 				cmdHistory.showAll();
 			}
-			else if ((Cmd[0] ==  'R' || Cmd[0] ==  'r') && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
+			else if (Cmd[0] ==  'R'  && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
 			}
-			else if ((Cmd[0] ==  'U' || Cmd[0] ==  'u') && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
+			else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;

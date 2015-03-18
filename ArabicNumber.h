@@ -3,27 +3,38 @@
 using namespace std;
 #ifndef ARABICNUMBER_H
 #define ARABICNUMBER_H
-//kelas untuk angka arab
+//! Class ArabicNumber.
+/*! 
+	Class ArabicNumber untuk mengubah string dalam bentuk angka arab ke dalam bentuk integer
+*/
 class ArabicNumber : public Number {
 	private :
-		//data member
+		//! data member class.
+		/*! 
+			StrValue merupakan bentuk string
+		*/
 		string StrValue; 
+		//! data member class (fungsi).
+		/*! 
+			numberConverter merupakan fungsi untuk mengubah string ke dalam bentuk integer
+		*/
 		int numberConverter(char);
 	public :
+		//! ArabicNumber constructor.
 		ArabicNumber();
-		/* ctor untuk kelas Arabic Number */
-		/*Insialisasi StrValue dengan " " */
+		//! ctor berparameter untuk kelas Arabic Number.
+		/*! 
+			Insialisasi StrValue dengan string s .
+		*/
 		ArabicNumber(string);
-		/* ctor berparameter untuk kelas Arabic Number */
-		/* Insialisasi StrValue dengan string s */
+		//! cctor pada kelas Arabic Number.
 		ArabicNumber(const ArabicNumber&);
-		/*cctor pada kelas Arabic Number */
+		//!dtor pada kelas Arabic Number.
 		~ArabicNumber();
-		/*dtor pada kelas Arabic Number */
+		//! fungsi untuk mengambil StrValue
 		string getStrValue(); 
-		/* fungsi untuk mengambil StrValue */
+		//! fungsi yang mengembalikan nilai long long, untuk mengubah string ke dalam bentuk angaka arab.
 		long long toArabicNumber(); 
-		/* fungsi untuk mengubah string ke integer */
 };
 #endif
 	
