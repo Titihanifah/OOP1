@@ -198,35 +198,35 @@ void Calculator::executeCommand(string Cmd) {
 		}
 		else if (isExpression(Cmd) == 0) { // bukan ekspresi
 			if (Cmd[0] ==  'S'  && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
-				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				char* ss[100];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
 				//cout<<"n : "<<n;
 				cmdHistory.showMem(n);
+				cmdHistory.putCommand(Cmd);
 			}
 			else if (Cmd ==  "ShowAll") {
 				cmdHistory.putCommand(Cmd);
 				cmdHistory.showAll();
 			}
 			else if (Cmd[0] ==  'R'  && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
-				cmdHistory.putCommand(Cmd);
-				char* s = (char*) Cmd.c_str();
-				char* ss[100];
-				int n;
-				sscanf(s, "%s %*s %d" , ss, &n);
-				cout<<"n : "<<n;
-				cmdHistory.redo(n);
-			}
-			else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') { 
-				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				char* ss[100];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
-				cout<<"n : "<<n<<endl;
+				//cout<<"n : "<<n<<endl;
+				cmdHistory.redo(n);
+				cmdHistory.putCommand(Cmd);
+			}
+			else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') { 
+				char* s = (char*) Cmd.c_str();
+				char* ss[100];
+				int n;
+				sscanf(s, "%s %d" , ss, &n);
+				//cout<<"n : "<<n<<endl;
 				cmdHistory.undo(n);
+				cmdHistory.putCommand(Cmd);
 			}
 			else if (Cmd ==  "Save") {
 				cmdHistory.putCommand(Cmd);

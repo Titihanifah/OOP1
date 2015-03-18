@@ -41,7 +41,7 @@ int main() {
 				cout<<"Setting Angka : Angka Romawi "<<endl;
 			}
 			else {
-				cout<<"Logika"<<endl;
+				cout<<"Setting Angka : Logika"<<endl;
 			}
 			if (c.getExpressionType() == 1) {
 				cout<<"Setting Ekspresi : Infiks "<<endl<<endl;
@@ -65,7 +65,7 @@ int main() {
 				cout<<"Setting Angka : Angka Romawi "<<endl;
 			}
 			else {
-				cout<<"Logika"<<endl;
+				cout<<"Setting Angka : Logika"<<endl;
 			}
 			if (c.getExpressionType() == 1) {
 				cout<<"Setting Ekspresi : Infiks "<<endl<<endl;
