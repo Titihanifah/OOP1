@@ -5,6 +5,8 @@ int main(){
 	string s;
 	cin>> s;
 	RomanNumber n(s);
-	printf("arabic=%d",n.toArabicNumber());
+	int res=n.toArabicNumber();
+	printf("arabic=%d\n",res);
+	cout<<"back to Roman= "<<n.toRomanNumber(res)<<endl;
 	return 0;
 }
