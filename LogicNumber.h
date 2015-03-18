@@ -15,7 +15,7 @@ class LogicNumber{
 	LogicNumber(const LogicNumber&);
 	~LogicNumber();
 	string getStrValue();
-	int toArabicNumber();
+	long long toArabicNumber();
 	string toLogicNumber(int);
 };
 #endif

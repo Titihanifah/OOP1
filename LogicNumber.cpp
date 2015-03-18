@@ -18,7 +18,7 @@ string LogicNumber:: getStrValue(){
 	return StrValue;
 }
 
-int LogicNumber:: toArabicNumber(){
+long long LogicNumber:: toArabicNumber(){
 	if(StrValue.compare("1")==0 || StrValue.compare("true")==0)
 		return 1;
 	else if(StrValue.compare("0")==0 || StrValue.compare("false")==0)

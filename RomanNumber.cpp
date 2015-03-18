@@ -14,7 +14,7 @@ RomanNumber::~RomanNumber(){}
 string RomanNumber::getStrValue(){
 	return StrValue;
 }
-int RomanNumber:: toArabicNumber(){
+long long RomanNumber:: toArabicNumber(){
 	int sum=0; int prev=0;
 	for(int i=(StrValue.length()-1); i>=0; i--){
 		//printf("prev=%d\n",prev);
