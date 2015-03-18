@@ -27,30 +27,19 @@ class ExpressionEvaluator{
 	
 public:	
 	
-	/**
-	* a Constructor taking no parameter
-	*/
+	//!a Default Constructor 
 	ExpressionEvaluator();
 	
-	/**
-	* a Constructor taking string input as a parameter representing the expression this object will holds
-	*/
+	//! a Constructor taking string input as a parameter representing the expression this object will holds
 	ExpressionEvaluator(string);
 	
-	/**
-	* a function returning values of a postfix arithmetic - expression string this object is holding
-	*/
+	//! a function returning values of a postfix arithmetic - expression string this object is holding
 	int calculateArith();
 	
-	/**
-	* a function returning values of a postfix logical - expression string this object is holding
-	*/
+	//! a function returning values of a postfix logical - expression string this object is holding
 	int calculateLogic();
 	
-	/**
-	* a function that set the expression this object is holding
-	* @param in a string argument.
-	*/
+	//! a function that set the expression this object is holding
 	void setExpression(string);
 };
 #endif

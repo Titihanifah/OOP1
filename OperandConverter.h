@@ -22,19 +22,21 @@ class OperandConverter
 {
 private:
 	string romawiExpression;
+	//! A function returning true if a character is an operator
 	int isOperator(char in);
 	Calculator* calculator;
 	
 public:
 	//! OperandConverter constructor.
     /*!
-		Takes in expression in string which is NOT an Arabic Expression ( Expression containing primitive integer )
+		A Constructor taking Calculator Object which contains this Object
     */
 	OperandConverter(Calculator* calculator);
 	
-	//! A function which returns string containing expression in Arabic ( primitive integer )
+	//! A function returning the string expression it holds into an Expression containing Arabic Number ( primitive integer )
 	string toArabicExpression();
 	
+	//! A function that set the expression this object is holding
 	void setExpression(string in);
 };
 

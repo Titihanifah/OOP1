@@ -26,28 +26,20 @@ class CommandHistory
 	Calculator* calculator; /*!< Calculator Object which contains this Object */
 	/**
 	* a function returning true if input string is an expression
-	* @param in a string argument.
 	*/
-	int isExpression(string in);
+	int isExpression(string);
 	
 public:
 	/**
 	* a Constructor which takes Calculator Object as argument
-	* @param in a string argument.
 	* save Calculator Object which holds this Object so that this Object can change the Calculator's Settings
 	*/
-	CommandHistory(Calculator* calculator);
+	CommandHistory(Calculator*);
 	
 	//! putCommand pushes argument into stack
-	/*!
-	\param in - a string argument.
-	*/
-	void putCommand(string in);
+	void putCommand(string);
 	
 	//! showMem(n) will print n user's histories into screen
-	/*!
-	\param in - a string argument.
-	*/
 	void showMem(int);
 	
 	//! showAll will print all user's histories into screen
