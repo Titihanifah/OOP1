@@ -68,13 +68,15 @@ void Calculator::executeCommand(string Cmd) {
 	int hasil;
 	if (getMode() == 2) { // mode settings
 			string input;
+			char* temp;
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			cout<<"1. Ketik 'opr' untuk set operator"<<endl;
 			cout<<"2. Ketik 'num' untuk set number"<<endl;
 			cout<<"3. Ketik 'exp' untuk set expression"<<endl;
 			cout<<"4. Ketik 'Exit' untuk kembali menu utama"<<endl;
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
-			cin>> input;
+			scanf("%s" , temp);
+			input = temp;
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
 				while (input != "Exit") {
 					if (input == "opr") {
@@ -82,7 +84,8 @@ void Calculator::executeCommand(string Cmd) {
 						cout<<"1.1 Ketik 'arith' untuk set operator menjadi aritmatika"<<endl;
 						cout<<"1.2 Ketik 'logic' untuk set operator menjadi logika dan relational"<<endl;
 						cout<<"----------------------------------------------------------------------------------------------"<<endl;
-						cin>> inputopr;
+						scanf("%s" , temp);
+						inputopr = temp;
 						system("CLS");
 						cmdHistory.putCommand(inputopr);
 						if (inputopr == "arith") {
@@ -97,7 +100,8 @@ void Calculator::executeCommand(string Cmd) {
 						cout<<"2.1 Ketik 'arabic' untuk set number menjadi arabic"<<endl;
 						cout<<"2.2 Ketik 'roman' untuk set number menjadi romawi"<<endl;
 						cout<<"----------------------------------------------------------------------------------------------"<<endl;
-						cin>>inputnum;
+						scanf("%s" , temp);
+						inputnum = temp;
 						system ("CLS");
 						cmdHistory.putCommand(inputnum);
 						if (inputnum == "arabic") { 
@@ -113,7 +117,8 @@ void Calculator::executeCommand(string Cmd) {
 						cout<<"3.2 Ketik 'pref' untuk set number menjadi prefiks"<<endl;
 						cout<<"3.3 Ketik 'in' untuk set number menjadi infiks"<<endl;
 						cout<<"----------------------------------------------------------------------------------------------"<<endl;
-						cin>>inputexp;
+						scanf("%s" , temp);
+						inputexp = temp;
 						system("Cls");
 						cmdHistory.putCommand(inputexp);
 						if (inputexp == "post") {
@@ -135,8 +140,10 @@ void Calculator::executeCommand(string Cmd) {
 					cout<<"3. Ketik 'exp' untuk set expression"<<endl;
 					cout<<"4. Ketik 'Exit' untuk kembali menu utama"<<endl;
 					cout<<"----------------------------------------------------------------------------------------------"<<endl;
-					cin>>input;
-				}	
+					scanf("%s" , temp);
+					input = temp;
+				}
+				return ;
 	}
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
@@ -145,23 +152,23 @@ void Calculator::executeCommand(string Cmd) {
 				// ubah operand ke arabic
 				oprConverter.setExpression(Cmd);
 				Cmd = oprConverter.toArabicExpression();
-				//cout<<ekspresi<<endl;
+				//cout<<"opr converter : "<<Cmd<<endl;
 			}
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
-			//cout<<"A"<<endl;
 			postfiks = expConverter.toPostfix(Cmd);
-			//cout<<postfiks<<endl;
+			cout<<"exp converter : "<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
-				//cout<<postfiks<<endl;
 				hasil = expEvaluator.calculateArith();
+				cout<<"evaluator : "<<hasil<<endl;
 				if (getNumberType() == ROMAWI_NUMBER) {
-					//RomanNumber rom;
+					RomanNumber rom;
+					romnum = rom.toRomanNumber(hasil);
 					//romnum.append(rom.toRomanNumber(hasil));
-					cout<<" Hasil : "<<hasil<<endl;
+					cout<<" Hasil : "<<romnum<<endl;
 					string temp = " = "; temp.append(romnum);
 					cmdHistory.putCommand(Cmd.append(temp));
 				}
@@ -202,14 +209,12 @@ void Calculator::executeCommand(string Cmd) {
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
-				cmdHistory.redo(n);
 			}
 			else if ((Cmd[0] ==  'U' || Cmd[0] ==  'u') && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
-				cmdHistory.undo(n);
 			}
 			else if (Cmd ==  "Save") {
 				cmdHistory.putCommand(Cmd);
