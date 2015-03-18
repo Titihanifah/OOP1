@@ -8,7 +8,7 @@
 #include "OperandConverter.h"
 #include "ExpressionConverter.h"
 #include "ExpressionEvaluator.h"
-#include "RomanNumber.h"
+#include <sstream>
 using namespace std;
 
 class Calculator {
@@ -33,7 +33,6 @@ class Calculator {
 		const static int PREFIKS_OPERATOR = 3;
 		const static int ARITMATIKA_OPERATOR = 1;
 		const static int LOGIKA_OPERATOR = 2;
-		const static int RELATIONAL_OPERATOR = 3;
 		const static int ARABIC_NUMBER = 1;
 		const static int ROMAWI_NUMBER = 2;
 		const static int MODE_HITUNG = 1;
