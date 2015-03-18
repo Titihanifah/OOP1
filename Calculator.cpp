@@ -2,17 +2,17 @@
 #include "Calculator.h"
 using namespace std;
 //ctor
-Calculator::Calculator():cmdHistory(this) {
+Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = 1;
 	NumType = 1;
 	ExpType = 1;
 	Mode = 1;
 	//CommandHistory cmdHistory;
-	OperandConverter oprConverter;
-	ExpressionConverter expConverter;
-	ExpressionEvaluator expEvaluator;
+	//OperandConverter oprConverter;
+	//ExpressionConverter expConverter;
+	//ExpressionEvaluator expEvaluator;
 }
-Calculator::Calculator(const Calculator& c) :cmdHistory(this) {
+Calculator::Calculator(const Calculator& c) :cmdHistory(this),oprConverter(this) {
 	OprType = c.OprType;
 	NumType = c.NumType;
 	ExpType = c.ExpType;
@@ -161,9 +161,9 @@ void Calculator::executeCommand(string Cmd) {
 				//cout<<postfiks<<endl;
 				hasil = expEvaluator.calculateArith();
 				if (getNumberType() == ROMAWI_NUMBER) {
-					RomanNumber rom;
-					romnum.append(rom.toRomanNumber(hasil));
-					cout<<" Hasil : "<<romnum<<endl;
+					//RomanNumber rom;
+					//romnum.append(rom.toRomanNumber(hasil));
+					cout<<" Hasil : "<<hasil<<endl;
 					string temp = " = "; temp.append(romnum);
 					cmdHistory.putCommand(Cmd.append(temp));
 				}

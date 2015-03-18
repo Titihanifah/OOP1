@@ -10,16 +10,19 @@ void CommandHistory::putCommand(string in)
 	if (in == "arith" || in == "logic" || in == "rel")
 	{
 		string temp = "SET opr";
+		in = in.append(" ");
 		undoStack.push(temp.append(string(in)));
 		saveStack.push(temp.append(string(in)));
 	}else if(in == "arabic" || in == "roman")
 	{
 		string temp = "SET num";
+		in = in.append(" ");
 		undoStack.push(temp.append(string(in)));
 		saveStack.push(temp.append(string(in)));
 	}else if(in == "post" || in == "in" || in == "pref")
 	{
 		string temp = "SET exp";
+		in = in.append(" ");
 		undoStack.push(temp.append(string(in)));
 		saveStack.push(temp.append(string(in)));
 	}else
@@ -27,6 +30,7 @@ void CommandHistory::putCommand(string in)
 		undoStack.push(in);
 		saveStack.push(in);
 	}
+	printf("successfull add\n");
 }
 
 int CommandHistory::isExpression(string in)
