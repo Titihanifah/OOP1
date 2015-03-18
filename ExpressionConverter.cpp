@@ -13,13 +13,22 @@ int ExpressionConverter::isOperator(char in)
 	if (in == '%') return 1;
 	if (in == '(') return 1;
 	if (in == ')') return 1;
+	if(in == '&') return 1;
+	if(in == '|') return 1;
+	if(in == '!') return 1;
+	if(in == '^') return 1;
+	if(in == '>') return 1;
+	if(in == '<') return 1;
+	if(in == '=') return 1;
 	return 0;
 }
 
 int ExpressionConverter::OperatorPrecedence(char op) {
-	if ((op == '*') || (op == '/') || (op == '%'))
+	if (op == '!')
+		return 3;
+	else if ((op == '*') || (op == '/') || (op == '%') || (op == '&') || (op == '>') || (op == '<'))
 		return 2;
-	else if ((op == '+') || (op == '-'))
+	else if ((op == '+') || (op == '-') || (op == '|') || (op == '='))
 		return 1;
 	return 0;
 }
@@ -38,9 +47,11 @@ string ExpressionConverter::toPostfix(string expression) {
 		{
 			if (isOperator(expression[i]))
 			{
-				string op1, op2;
+				string op1 = "";
+				string op2 = "";
 				S.pop(op1);
-				S.pop(op2);
+				if (expression[i] != '!')
+					S.pop(op2);
 				op1 = op1 + op2 + expression[i];
 				if (i != 0)
 				{

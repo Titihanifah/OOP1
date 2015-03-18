@@ -5,25 +5,27 @@ using namespace std;
 int main()
 {
 	ExpressionConverter ec;
-	ec.setExpType(0);
+	ec.setExpType(3);
 	string postfix, exp;
-	exp = "+ 2 - 51 * 7 3";
+	//exp = "+ 2 - 51 * 7 3";
 	//exp = "+ 2 - 1 7";
+	exp = "& 2 ! 5";
 	postfix = ec.toPostfix(exp);
 	cout << postfix << endl;
 	
-	ec.setExpType(1);
+	ec.setExpType(2);
 	//exp = "2 + 3";
 	//exp = "2 + 3 * 5";
 	//exp = "2 * 3 + 5";
 	//exp = "(2 + 3)";
 	//exp = "((2 + 3) * 5)";
 	//exp = "2 * (3 + 5)";	
-	exp = "((28 - 7) % (3 + 4))";
+	//exp = "((28 - 7) % (3 + 4))";
+	exp = "(!(2 | 5) & 3)";
 	postfix = ec.toPostfix(exp);
 	cout << postfix << endl;
 	
-	ec.setExpType(2);
+	ec.setExpType(1);
 	exp = "2 5 +";
 	postfix = ec.toPostfix(exp);
 	cout << postfix << endl;
