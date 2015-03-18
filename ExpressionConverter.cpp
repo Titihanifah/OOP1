@@ -24,13 +24,26 @@ int ExpressionConverter::isOperator(char in)
 }
 
 int ExpressionConverter::OperatorPrecedence(char op) {
-	if (op == '!')
-		return 3;
-	else if ((op == '*') || (op == '/') || (op == '%') || (op == '&') || (op == '>') || (op == '<'))
-		return 2;
-	else if ((op == '+') || (op == '-') || (op == '|') || (op == '='))
-		return 1;
-	return 0;
+	switch (op) 
+	{
+		case '!' : return 8;
+				   break;
+		case '*' : case '/' : case '%' : return 7;
+										 break;
+		case '+' : case '-' : return 6;
+							  break;
+		case '<' : case '>' : return 5;
+										 break;
+		case '=' : return 4;
+				   break;
+		case '&' : return 3;
+				   break;
+		case '^' : return 2;
+				   break;
+		case '|' : return 1;
+				   break;
+		default : return 0;
+	};
 }
 
 string ExpressionConverter::toPostfix(string expression) {
