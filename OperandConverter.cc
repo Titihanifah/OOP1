@@ -16,6 +16,9 @@ void OperandConverter::setExpression(string in)
 int OperandConverter::isOperator(char in)
 {
 	if (in == '+') return 1;
+	if (in == '>') return 1;
+	if (in == '<') return 1;
+	if (in == '=') return 1;
 	if (in == '-') return 1;
 	if (in == '/') return 1;
 	if (in == '*') return 1;
@@ -42,8 +45,10 @@ string OperandConverter::toArabicExpression()
 	else if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) {printf("2\n");num = new RomanNumber();}
 	else if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) {printf("3\n");num = new LogicNumber();}
 	*/
+	//printf("lef : %d\n",romawiExpression.length());
 	for (int i=0;i<romawiExpression.length();i++)
 	{
+		//printf("i %d\n",i);
 		if (isOperator(romawiExpression[i])) // arithmetic
 		{
 			mode = 1;
@@ -55,20 +60,21 @@ string OperandConverter::toArabicExpression()
 			if (mode == 1)
 			{
 				res.append(spc);
-				continue;
 			}
-			
+			else
+			{
 			// previous is operand
 			if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) {num = new ArabicNumber(temp);}
 			else if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) {num = new RomanNumber(temp);}
 			else if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) {num = new LogicNumber(temp);}
 			long long xx = num->toArabicNumber();
-			printf("xx %d\n",xx);
+			//printf("xx %d\n",xx);
 			ostringstream convert;convert << xx;
 			
 			res.append(convert.str()); // append operand
 			res.append(spc); // append space
 			temp = "";
+		}
 		}
 		else
 		{
@@ -80,10 +86,10 @@ string OperandConverter::toArabicExpression()
 	// reach end of line
 	if (temp!="")
 	{
-		printf("2%s\n",temp.c_str());
-		if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) {printf("%s\n",temp.c_str());num = new ArabicNumber(temp);}
-		else if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) {printf("%s\n",temp.c_str());num = new RomanNumber(temp);}
-		else if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) {printf("2%s\n",temp.c_str());num = new LogicNumber(temp);}
+		//printf("2%s\n",temp.c_str());
+		if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) {num = new ArabicNumber(temp);}
+		else if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) {num = new RomanNumber(temp);}
+		else if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) {num = new LogicNumber(temp);}
 		int xx = num->toArabicNumber();
 		ostringstream convert;convert << xx;
 		

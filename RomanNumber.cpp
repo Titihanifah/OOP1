@@ -16,7 +16,6 @@ string RomanNumber::getStrValue(){
 }
 
 long long RomanNumber:: toArabicNumber(){
-	printf("masuk\n");
 	long long sum=0, prev=0;
 	for(int i=(StrValue.length()-1); i>=0; i--){
 		//printf("prev=%d\n",prev);
@@ -29,7 +28,6 @@ long long RomanNumber:: toArabicNumber(){
 				prev = digitToArabic(StrValue[i]);
 		}
 	}
-	printf("sum : %d\n",sum);
 	return sum;
 }
 int RomanNumber:: digitToArabic(char c){

@@ -63,6 +63,12 @@ int ExpressionEvaluator::calculateLogic()
 			opFlag = 0;
 		}
 	}
+	if (temp != "")
+	{
+		int xx = atoi(temp.c_str());
+		st.push(xx);
+		temp = "";
+	}
 	int hasil;
 	st.pop(hasil);
 	return hasil;
@@ -71,9 +77,11 @@ int ExpressionEvaluator::calculateLogic()
 int ExpressionEvaluator::calculateArith()
 {
 	opFlag = 0;
+	int minus = 0;
 	for (int i=0;i<expression.length();i++)
 	{
-		if (isOperatorArith(expression[i]))
+		if (expression[i] == '-') minus = 1;
+		if (isOperatorArith(expression[i]) && (expression[i+1] == ' ' || i+1 == expression.length()))
 		{
 			//printf("1\n");
 			opFlag = 1;
@@ -93,11 +101,18 @@ int ExpressionEvaluator::calculateArith()
 				st.push(xx);
 				temp = "";
 			}
-		}else
+		}
+		else
 		{
 			temp.append(string(1,expression[i]));
 			opFlag = 0;
 		}
+	}
+	if (temp != "")
+	{
+		int xx = atoi(temp.c_str());
+		st.push(xx);
+		temp = "";
 	}
 	int tt;
 	st.pop(tt);
