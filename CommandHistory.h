@@ -14,16 +14,23 @@
 #include "Stack.h"
 using namespace std;
 
+class Calculator;
+
 class CommandHistory
 {
-	friend class Calculator;
+	//friend class Calculator;
 	
 private:
 	Stack<string> undoStack;
 	Stack<string> redoStack;
+	Stack<string> tempStack;
+	Stack<string> saveStack;
+	Calculator* calculator;
+	int isExpression(string in);
+	
 public:
 	//! CommandHistory constructor.
-	CommandHistory();
+	CommandHistory(Calculator* calculator);
 	
 	//! putCommand pushes argument into stack
 	/*!
@@ -42,6 +49,9 @@ public:
 	
 	//! save will request filename and save all commands in memory to filename
 	void save();
+	
+	void undo(int);
+	void redo(int);
 };
 
 #endif

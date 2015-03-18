@@ -29,81 +29,73 @@ string OperandConverter::toArabicExpression()
 	string res = "";
 	string temp = "";
 	string spc = " ";
-	int flag, space = 0;
+	int mode = 1; // 1 : previous operator 2 : previous operand
+	int flag = 1, space = 0;
 	
 	for (int i=0;i<romawiExpression.length();i++)
 	{
-		if (isOperator(romawiExpression[i]) == 1) // arithmetic
+		if (flag!=0) break;
+		flag = isOperator(romawiExpression[i]);
+	}
+	
+	for (int i=0;i<romawiExpression.length();i++)
+	{
+		if (isOperator(romawiExpression[i])) // arithmetic
 		{
-			if (flag != 1 || flag != 2) flag = 1;
-			//printf("temp : %s\n",temp.c_str());
-			RomanNumber n(temp);
-			int xx = n.toArabicNumber();
-			//printf("xx : %d\n",xx);
-			//int xx = romawiToInteger((char*)temp.c_str());
-			ostringstream convert;
-			convert << xx;
-			res.append(convert.str());
-			if (space == 1)
-			{
-				space = 0;
-				res.append(spc);
-			}
-			//printf("op : %s\n",string(1,romawiExpression[i]).c_str());
+			mode = 1;
 			res.append(string(1,romawiExpression[i]));
-			temp = "";
-		}else if (isOperator(romawiExpression[i]) == 2) // logic
-		{
-			if (flag != 1 || flag != 2) flag = 2;
-			//printf("temp : %s\n",temp.c_str());
-			LogicNumber n(temp);
-			int xx = n.toArabicNumber();
-			//printf("temp : %s\n",temp.c_str());
-			//printf("xx : %d\n",xx);
-			//int xx = romawiToInteger((char*)temp.c_str());
-			ostringstream convert;
-			convert << xx;
-			res.append(convert.str());
-			if (space == 1)
-			{
-				space = 0;
-				res.append(spc);
-			}
-			//printf("op : %s\n",string(1,romawiExpression[i]).c_str());
-			res.append(string(1,romawiExpression[i]));
-			temp = "";
 		}
 		else if (romawiExpression[i] == ' ')
 		{
-			space = 1;
+			// previous is operator
+			if (mode == 1)
+			{
+				res.append(spc);
+				continue;
+			}
+			
+			// previous is operand
+			if (flag == 1)
+			{
+				RomanNumber n(temp);
+				int xx = n.toArabicNumber();
+				ostringstream convert;convert << xx;
+				
+				res.append(convert.str()); // append operand
+				res.append(spc); // append space
+				temp = "";
+			}else if (flag == 2)
+			{
+				LogicNumber n(temp);
+				int xx = n.toArabicNumber();
+				ostringstream convert;convert << xx;
+				
+				res.append(convert.str()); // append operand
+				res.append(spc); // append space
+				temp = "";
+			}
 		}
 		else
 		{
-			if (space == 1) {space = 0;res.append(spc);}
+			mode = 2;
 			temp.append(string(1,romawiExpression[i]));
 		}
 	}
-	//printf("flag : %d\n",flag);
+
 	if (flag == 1 && temp!="")
 	{
-		//printf("temp : %s\n",temp.c_str());
 		RomanNumber n(temp);
 		int xx = n.toArabicNumber();
-		//int xx = romawiToInteger((char*)temp.c_str());
-		ostringstream convert;
-		convert << xx;
+		ostringstream convert;convert << xx;
+		
 		res.append(convert.str());
 	}
 	else if (flag == 2 && temp!="")
 	{
-		//printf("temp : %s\n",temp.c_str());
 		LogicNumber n(temp);
-		//printf("temp : %s\n",temp.c_str());
 		int xx = n.toArabicNumber();
-		//printf("xx : %d\n",xx);
-		//int xx = romawiToInteger((char*)temp.c_str());
-		ostringstream convert;
-		convert << xx;
+		ostringstream convert;convert << xx;
+		
 		res.append(convert.str());
 	}
 	return res;
