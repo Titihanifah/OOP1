@@ -8,6 +8,7 @@
 #include "OperandConverter.h"
 #include "ExpressionConverter.h"
 #include "ExpressionEvaluator.h"
+#include "Stack.h"
 #include <sstream>
 using namespace std;
 
@@ -47,9 +48,5 @@ class Calculator {
 		void setMode(int);
 		int getMode();
 		void executeCommand(string);
-		void undo();
-		void undo(int);
-		void redo();
-		void redo(int);
 };
 #endif
