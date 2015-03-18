@@ -9,28 +9,32 @@ void CommandHistory::putCommand(string in)
 {
 	if (in == "arith" || in == "logic" || in == "rel")
 	{
-		string temp = "SET opr";
-		in = in.append(" ");
-		undoStack.push(temp.append(string(in)));
-		saveStack.push(temp.append(string(in)));
+		string temp = "SET opr ";
+		temp.append(string(in));
+		undoStack.push(temp);
+		saveStack.push(temp);
+		//printf("successfull add %s\n",temp.c_str());
 	}else if(in == "arabic" || in == "roman")
 	{
-		string temp = "SET num";
-		in = in.append(" ");
-		undoStack.push(temp.append(string(in)));
-		saveStack.push(temp.append(string(in)));
+		string temp = "SET num ";
+		temp.append(string(in));
+		undoStack.push(temp);
+		saveStack.push(temp);
+		//printf("successfull add %s\n",temp.c_str());
 	}else if(in == "post" || in == "in" || in == "pref")
 	{
-		string temp = "SET exp";
-		in = in.append(" ");
-		undoStack.push(temp.append(string(in)));
-		saveStack.push(temp.append(string(in)));
-	}else
-	{
-		undoStack.push(in);
-		saveStack.push(in);
+		string temp = "SET exp ";
+		temp.append(string(in));
+		undoStack.push(temp);
+		saveStack.push(temp);
+		//printf("successfull add %s\n",temp.c_str());
 	}
-	printf("successfull add\n");
+	else
+	{
+		saveStack.push(in);
+		//printf("successfull add %s\n",in.c_str());
+	}
+
 }
 
 int CommandHistory::isExpression(string in)
@@ -116,6 +120,11 @@ void CommandHistory::save()
 
 void CommandHistory::undo(int n)
 {
+	if (undoStack.isEmpty())
+	{
+		printf("No SET command(s), No undo.....\n");
+		return;
+	}
 	while (!redoStack.isEmpty()) // redo is just for the last undo
 	{
 		string temp;
@@ -157,6 +166,11 @@ void CommandHistory::undo(int n)
 
 void CommandHistory::redo(int n)
 {
+	if (undoStack.isEmpty())
+	{
+		printf("No undo, No redoooo....\n");
+		return;
+	}
 	for (int i=0;i<n;i++)
 	{
 		string temp;
