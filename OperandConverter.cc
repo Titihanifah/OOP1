@@ -37,6 +37,7 @@ string OperandConverter::toArabicExpression()
 	int mode = 1; // 1 : previous operator 2 : previous operand
 	int flag = 1, space = 0;
 	Number* num;
+	
 	if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) num = new ArabicNumber();
 	else if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) num = new RomanNumber();
 	else if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) num = new LogicNumber();
@@ -95,8 +96,7 @@ string OperandConverter::toArabicExpression()
 	// reach end of line
 	if (temp!="")
 	{
-		RomanNumber n(temp);
-		int xx = n.toArabicNumber();
+		int xx = num->toArabicNumber();
 		ostringstream convert;convert << xx;
 		
 		res.append(convert.str());
