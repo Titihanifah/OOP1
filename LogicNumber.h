@@ -16,5 +16,6 @@ class LogicNumber{
 	~LogicNumber();
 	string getStrValue();
 	int toArabicNumber();
+	string toLogicNumber(int);
 };
 #endif

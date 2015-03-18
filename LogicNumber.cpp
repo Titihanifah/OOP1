@@ -32,3 +32,10 @@ int LogicNumber:: toArabicNumber(){
 		return val;
 	}
 }
+
+string LogicNumber::toLogicNumber(int L){
+	if(L>0)
+		return "true";
+	else
+		return "false";
+}
