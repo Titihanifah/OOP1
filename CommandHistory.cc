@@ -168,9 +168,9 @@ void CommandHistory::undo(int n)
 				sscanf(ttemp,"%s",tttemp);
 				
 				// if user's command Set operator arithmetic mode ( + , - , / , * , % )
-				if (strcmp(ttemp,"arith") == 0) calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);
+				if (strcmp(ttemp,"arith") == 0) {printf("AA\n");calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);}
 				// if user's command Set operator logic mode ( & , | , ^ , ! , < , > , = )
-				if (strcmp(ttemp,"logic") == 0) calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);
+				if (strcmp(ttemp,"logic") == 0) {printf("BB\n");calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);}
 			}
 			// if user's command Set number mode
 			else if (strcmp(ttemp,"num") == 0)
@@ -179,11 +179,11 @@ void CommandHistory::undo(int n)
 				sscanf(ttemp,"%s",tttemp);
 				
 				// if user's command Set number mode to Arabic
-				if (strcmp(ttemp,"arabic") == 0) calculator->setNumberType(Calculator::ARABIC_NUMBER);
+				if (strcmp(ttemp,"arabic") == 0) {printf("CC\n");calculator->setNumberType(Calculator::ARABIC_NUMBER);}
 				// if user's command Set number mode to Romawi
-				if (strcmp(ttemp,"roman") == 0) calculator->setNumberType(Calculator::ROMAWI_NUMBER);
+				if (strcmp(ttemp,"roman") == 0) {printf("DD\n");calculator->setNumberType(Calculator::ROMAWI_NUMBER);}
 				// if user's command Set number mode to Logic ( true , false )
-				if (strcmp(ttemp,"logic") == 0) calculator->setNumberType(Calculator::LOGIC_NUMBER);
+				if (strcmp(ttemp,"logic") == 0) {printf("EE\n");calculator->setNumberType(Calculator::LOGIC_NUMBER);}
 			}
 			// if user's command Set expression mode
 			else if (strcmp(ttemp,"exp") == 0)
@@ -192,11 +192,11 @@ void CommandHistory::undo(int n)
 				sscanf(ttemp,"%s",tttemp);
 				
 				// if user's command Set expression mode to postfix
-				if (strcmp(ttemp,"post") == 0) calculator->setExpressionType(Calculator::POSTFIKS_OPERATOR);
+				if (strcmp(ttemp,"post") == 0) {printf("FF\n");calculator->setExpressionType(Calculator::POSTFIKS_OPERATOR);}
 				// if user's command Set expression mode to infix
-				if (strcmp(ttemp,"in") == 0) calculator->setExpressionType(Calculator::INFIKS_OPERATOR);
+				if (strcmp(ttemp,"in") == 0) {printf("GG\n");calculator->setExpressionType(Calculator::INFIKS_OPERATOR);}
 				// if user's command Set expression mode to prefix
-				if (strcmp(ttemp,"pref") == 0) calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);
+				if (strcmp(ttemp,"pref") == 0) {printf("HH\n");calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);}
 			}
 		}
 		printf("successful\n");
