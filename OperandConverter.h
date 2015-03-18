@@ -1,8 +1,7 @@
-//!  A class to change types of Operands
 /*!
-	Numbers in an expression is converted into Arabic Number which is
-	a normal primitive integer
-*/
+ *  \author  Elvan Owen
+ *  \date    1990-2011
+ */
 
 #ifndef __OPERAND_CONVERTER__
 #define __OPERAND_CONVERTER__
@@ -18,6 +17,11 @@
 
 class Calculator;
 
+//!  OperandConverter class
+/*!
+	A class to change types of Operands
+	Numbers in an expression is converted into Arabic Number ( primitive integer )
+*/
 class OperandConverter
 {
 private:

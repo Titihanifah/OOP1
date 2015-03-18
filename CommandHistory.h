@@ -1,8 +1,7 @@
-//!  CommandHistory class.
 /*!
-	Class which has its own stack to remember user's past command.
-	Class is able to perform a number of methods related to user's past command
-*/
+ *  \author  Elvan Owen
+ *  \date    1990-2011
+ */
 
 #ifndef __COMMAND_HISTORY__
 #define __COMMAND_HISTORY__
@@ -17,6 +16,11 @@ using namespace std;
 //! forward reference
 class Calculator;
 
+//!  CommandHistory class.
+/*!
+	Class which has its own stack to remember user's past command.
+	Class is able to perform a number of methods related to user's past command
+*/
 class CommandHistory
 {	
 	Stack<string> undoStack; /*!< stack holding user's SET commands that enables them to undo */

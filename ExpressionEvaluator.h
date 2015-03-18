@@ -1,3 +1,8 @@
+/*!
+ *  \author  Elvan Owen
+ *  \date    1990-2011
+ */
+
 #ifndef __EXPRESSION_EVALUATOR__
 #define __EXPRESSION_EVALUATOR__
 #include <string>
@@ -8,6 +13,10 @@
 #include "Stack.h"
 using namespace std;
 
+//!  ExpressionEvaluator class
+/*!
+	A class to return values from a postfix-expression string
+*/
 class ExpressionEvaluator{
 	Stack<int> st; /*!< stack holding values to calculate the value of an expression */
 	string temp;
