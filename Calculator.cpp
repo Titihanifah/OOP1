@@ -48,7 +48,7 @@ int Calculator::getMode() {
 }
 
 int Calculator::isExpression(string in) {
-	if(in[0] ==  'S'  && in[1] ==  'h' && in[2] ==  'o' && in[3] !=  'w' && in[4] ==  'M' && in[5] !=  'e' && in[6] ==  'm') {
+	if(in[0] ==  'S'  && in[1] ==  'h' && in[2] ==  'o' && in[3] ==  'w' && in[4] ==  'M' && in[5] ==  'e' && in[6] ==  'm') {
 		return 0;
 	} else if (in[0] ==  'R' && in[1] ==  'e' && in[2] ==  'd' && in[3] ==  'o') {
 		return 0;
@@ -216,12 +216,14 @@ void Calculator::executeCommand(string Cmd) {
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
+				cmdHistory.redo(n);
 			}
 			else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
+				cmdHistory.undo(n);
 			}
 			else if (Cmd ==  "Save") {
 				cmdHistory.putCommand(Cmd);
