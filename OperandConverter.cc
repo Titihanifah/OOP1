@@ -36,9 +36,11 @@ string OperandConverter::toArabicExpression()
 	string spc = " ";
 	int mode = 1; // 1 : previous operator 2 : previous operand
 	int flag = 1, space = 0;
-	if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) Number* num = new ArabicNumber();
-	if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) Number* num = new RomawiNumber();
-	if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) Number* num = new LogicNumber();
+	Number* num;
+	
+	if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) num = new ArabicNumber();
+	else if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) num = new RomanNumber();
+	else if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) num = new LogicNumber();
 	
 	for (int i=0;i<romawiExpression.length();i++)
 	{
@@ -90,7 +92,17 @@ string OperandConverter::toArabicExpression()
 			temp.append(string(1,romawiExpression[i]));
 		}
 	}
-
+	
+	// reach end of line
+	if (temp!="")
+	{
+		int xx = num->toArabicNumber();
+		ostringstream convert;convert << xx;
+		
+		res.append(convert.str());
+	}
+	
+	/*
 	if (flag == 1 && temp!="")
 	{
 		RomanNumber n(temp);
@@ -107,5 +119,6 @@ string OperandConverter::toArabicExpression()
 		
 		res.append(convert.str());
 	}
+	*/
 	return res;
 }

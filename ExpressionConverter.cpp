@@ -45,7 +45,7 @@ string ExpressionConverter::toPostfix(string expression) {
 		string oprnd = "";
 		for (int i = expression.length() - 1; i >= 0; i--)
 		{
-			if (isOperator(expression[i]))
+			if (isOperator(expression[i])&& expression[i+1]==' ')
 			{
 				string op1 = "";
 				string op2 = "";
@@ -81,7 +81,7 @@ string ExpressionConverter::toPostfix(string expression) {
 		string stemp = "";
 		for (int i = 0; i < expression.length(); i++)
 		{
-			if (isOperator(expression[i]))
+			if (isOperator(expression[i])&& expression[i+1]==' ')
 			{
 				if (stemp != "") 
 				{
