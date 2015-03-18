@@ -146,7 +146,7 @@ void Calculator::executeCommand(string Cmd) {
 			if (getNumberType() == ROMAWI_NUMBER) {
 				// ubah operand ke arabic
 				oprConverter.setExpression(Cmd);
-				ekspresi = oprConverter.toArabicExpression();
+				Cmd = oprConverter.toArabicExpression();
 				//cout<<ekspresi<<endl;
 			}
 			// ubah ekspresi ke postfiks
