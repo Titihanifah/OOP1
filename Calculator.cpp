@@ -31,37 +31,13 @@ void Calculator::setExpressionType(int ET){
 	ExpType = ET;
 }
 int Calculator::getOperatorType() {
-	int Op =  OprType;
-	if (Op == 1) {
-		cout<<"Setting Operator : Operator Aritmatika ";
-	} else {
-		cout<<"Setting Operator : Operator Logika dan Relasional ";
-	}
-	return Op;
+	return  OprType;
 }
 int Calculator::getNumberType() {
-	int Num = NumType;
-	if (Num == 1) {
-		cout<<"Setting Angka : Angka Arab ";
-	} else if (Num == 2) {
-		cout<<"Setting Angka : Angka Romawi ";
-	}
-	else {
-		cout<<"Logika"<<endl;
-	}
-	return Num;
+	return NumType;
 }
 int Calculator::getExpressionType() {
-	int Exp = ExpType;
-	if (Exp == 1) {
-		cout<<"Setting Ekspresi : Infiks ";
-	} else if (Exp == 2) {
-		cout<<"Setting Ekspresi : Posfiks ";
-	}
-	else {
-		cout<<"Setting Ekspresi : Prefiks ";
-	}
-	return Exp;
+	return ExpType;
 }
 
 void Calculator::setMode(int M) {
