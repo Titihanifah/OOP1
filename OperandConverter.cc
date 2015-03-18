@@ -39,7 +39,7 @@ string OperandConverter::toArabicExpression()
 			//printf("temp : %s\n",temp.c_str());
 			RomanNumber n(temp);
 			int xx = n.toArabicNumber();
-			printf("xx : %d\n",xx);
+			//printf("xx : %d\n",xx);
 			//int xx = romawiToInteger((char*)temp.c_str());
 			ostringstream convert;
 			convert << xx;

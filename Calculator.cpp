@@ -145,18 +145,21 @@ void Calculator::executeCommand(string Cmd) {
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
+			//cout<<"A"<<endl;
 			postfiks = expConverter.toPostfix(ekspresi);
-			//cout<<postfiks<<endl;
+			cout<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
+
 				//cout<<postfiks<<endl;
+
 				hasil = expEvaluator.calculateArith();
 				cout<<" Hasil : "<<hasil<<endl;
 				cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			}
 			else if (getOperatorType() == 2) { // operator logic
-				expEvaluator.setExpression(ekspresi);
+				expEvaluator.setExpression(postfiks);
 				hasil = expEvaluator.calculateLogic();
 				cout<<" Hasil : "<<hasil<<endl;
 				cout<<"-----------------------------------------------------------------------------------------------"<<endl;

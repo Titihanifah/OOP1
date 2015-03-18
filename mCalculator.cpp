@@ -13,6 +13,7 @@ int main() {
 	cout<<"Mode yang dipilih : ";
 	cin>>Mode; cout<<endl;
 	c.setMode(Mode);
+
 	if (c.getMode() == 2) {
 		cout<<"Masukan command 'Set' : ";
 		cin>>cmd; cout<<endl;
@@ -22,6 +23,7 @@ int main() {
 	}
 	else if (c.getMode() == 1) {
 		c.executeCommand(cmd);
+
 	}
 	
 	return 0;
