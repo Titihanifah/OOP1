@@ -6,7 +6,7 @@ Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = ARITMATIKA_OPERATOR;
 	NumType = ARABIC_NUMBER;
 	ExpType = INFIKS_OPERATOR;
-	Mode = 1;
+	//Mode = 1;
 	//CommandHistory cmdHistory;
 	//OperandConverter oprConverter;
 	//ExpressionConverter expConverter;

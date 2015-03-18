@@ -12,22 +12,28 @@ int main() {
 	cout<<"Angka arab untuk jenis agka"<<endl;
 	cout<<"Infiks untuk jenis ekspresi"<<endl;
 	c.setMode(1);
+	cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 	//loop
 	while (1) {
-		cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 		cout<<"Masukan command : ";
 		//cin.ignore();
 		char temp[256];
 		cin.getline(temp,256); cout<<endl;
 		char* ttemp = strdup(temp);
 		cmd = ttemp;
-		cout<<cmd<<endl;
+		//cout<<cmd<<endl;
 		//printf("%s", ttemp);
 		getchar();
 		if (cmd.compare("Set") == 0) {
 			c.setMode(2); cout<<endl;
+			cout<<"Mode yang dipilih adalah mode settings"<<endl;
+			c.executeCommand(cmd);
 		}
-		c.executeCommand(cmd);
+		else {
+			cout<<"Mode yang dipilih adalah mode ekspresi"<<endl;
+			c.executeCommand(cmd);
+		}
+		//c.executeCommand(cmd);
 		if (cmd.compare("Set") == 0) {
 			cin.ignore();
 		}
