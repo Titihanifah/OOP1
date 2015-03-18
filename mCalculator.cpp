@@ -2,35 +2,28 @@
 #include "Calculator.h"
 
 int main() {
-	Calculator c;
+	Calculator c; //ctor
 	int Mode;
-	string cmd;
+	string cmd, exp;
+	system("CLS");
+	cout<<"Calclulator"<<endl<<endl;
 	cout<<" Masukan mode calculator : "<<endl;
 	cout<<" 1. Ekspresi "<<endl;
-	cout<<" 2. Settings (Set) "<<endl;
-	cout <<" 3. Exit " << endl;
+	cout<<" 2. Settings (Set) "<<endl<<endl;
 	cout<<"Mode yang dipilih : ";
-	cin>>Mode;
+	cin>>Mode; cout<<endl;
 	c.setMode(Mode);
-	while (Mode != 3)
-	{
-		if (c.getMode() == 2) {
-			//cout<<" Masukan command : ";
-			//cin>>cmd;
-			cmd = "Set";
-			c.executeCommand(cmd);
-		}
-		else if (c.getMode() == 1) {
-			cmd = "";
-			c.executeCommand(cmd);
-		}
-		cout<<" Masukan mode calculator : "<<endl;
-		cout<<" 1. Ekspresi "<<endl;
-		cout<<" 2. Settings (Set) "<<endl;
-		cout <<" 3. Exit " << endl;
-		cout<<"Mode yang dipilih : ";
-		cin>>Mode;
-		c.setMode(Mode);
+
+	if (c.getMode() == 2) {
+		cout<<"Masukan command 'Set' : ";
+		cin>>cmd; cout<<endl;
+		c.executeCommand(cmd);
+		c.setMode(1);
+		c.executeCommand(exp);
+	}
+	else if (c.getMode() == 1) {
+		c.executeCommand(cmd);
+
 	}
 	
 	return 0;

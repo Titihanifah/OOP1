@@ -3,6 +3,7 @@
 #define CALCULATOR_H
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "CommandHistory.h"
 #include "OperandConverter.h"
 #include "ExpressionConverter.h"
