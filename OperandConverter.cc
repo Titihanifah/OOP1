@@ -7,7 +7,7 @@ OperandConverter::OperandConverter(Calculator* calculator){
 }
 
 void OperandConverter::setExpression(string in){
-	romawiExpression = in;
+	expression = in;
 }
 
 int OperandConverter::isOperator(char in)
@@ -37,16 +37,16 @@ string OperandConverter::toArabicExpression(){
 	int mode = 1; // 1 : previous operator , 2 : previous operand
 	Number* num; // Number Object to store temporary operand while parsing
 	
-	for (int i=0;i<romawiExpression.length();i++)
+	for (int i=0;i<expression.length();i++)
 	{
-		if (isOperator(romawiExpression[i]))
+		if (isOperator(expression[i]))
 		{
 			// set mode to 1
 			mode = 1;
 			// merely append the current character if it is an operator
-			res.append(string(1,romawiExpression[i]));
+			res.append(string(1,expression[i]));
 		}
-		else if (romawiExpression[i] == ' ')
+		else if (expression[i] == ' ')
 		{
 		    //mode = 1 : if previous character is an operator
 			if (mode == 1) res.append(spc);
@@ -70,7 +70,7 @@ string OperandConverter::toArabicExpression(){
 			// set mode to 2 : which means previous character is an operand
 			mode = 2;
 			// buffering current operand
-			temp.append(string(1,romawiExpression[i]));
+			temp.append(string(1,expression[i]));
 		}
 	}
 	

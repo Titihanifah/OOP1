@@ -16,7 +16,7 @@ using namespace std;
 //! forward reference
 class Calculator;
 
-//!  CommandHistory class.
+//!  Class CommandHistory
 /*!
 	Class which has its own stack to remember user's past command.
 	Class is able to perform a number of methods related to user's past command

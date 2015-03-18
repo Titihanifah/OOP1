@@ -17,7 +17,7 @@
 
 class Calculator;
 
-//!  OperandConverter class
+//!  Class OperandConverter
 /*!
 	A class to change types of Operands
 	Numbers in an expression is converted into Arabic Number ( primitive integer )
@@ -25,7 +25,8 @@ class Calculator;
 class OperandConverter
 {
 private:
-	string romawiExpression;
+	// string containing expression that will be converted
+	string expression;
 	//! A function returning true if a character is an operator
 	int isOperator(char in);
 	Calculator* calculator;
