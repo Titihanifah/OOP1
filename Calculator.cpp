@@ -157,7 +157,7 @@ void Calculator::executeCommand(string Cmd) {
 				cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			}
 			else if (getOperatorType() == 2) { // operator logic
-				expEvaluator.setExpression(ekspresi);
+				expEvaluator.setExpression(postfiks);
 				hasil = expEvaluator.calculateLogic();
 				cout<<" Hasil : "<<hasil<<endl;
 				cout<<"-----------------------------------------------------------------------------------------------"<<endl;
