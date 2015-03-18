@@ -4,7 +4,7 @@ using namespace std;
 //ctor
 Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = ARITMATIKA_OPERATOR;
-	NumType = ROMAWI_NUMBER;
+	NumType = ARABIC_NUMBER;
 	ExpType = INFIKS_OPERATOR;
 	Mode = 1;
 	//CommandHistory cmdHistory;
