@@ -37,7 +37,6 @@ long long ArabicNumber::toArabicNumber() {
 	int num;
 	for (int i = StrValue.length() - 1 ; i >= 0; i--) {
 		num = numberConverter(StrValue[i]);
-		cout<<num<<endl;
 		sum += num * hasil;
 		hasil = hasil * 10;
 	}
