@@ -31,13 +31,37 @@ void Calculator::setExpressionType(int ET){
 	ExpType = ET;
 }
 int Calculator::getOperatorType() {
-	return OprType;
+	int Op =  OprType;
+	if (Op == 1) {
+		cout<<"Setting Operator : Operator Aritmatika ";
+	} else {
+		cout<<"Setting Operator : Operator Logika dan Relasional ";
+	}
+	return Op;
 }
 int Calculator::getNumberType() {
-	return NumType;
+	int Num = NumType;
+	if (Num == 1) {
+		cout<<"Setting Angka : Angka Arab ";
+	} else if (Num == 2) {
+		cout<<"Setting Angka : Angka Romawi ";
+	}
+	else {
+		cout<<"Logika"<<endl;
+	}
+	return Num;
 }
 int Calculator::getExpressionType() {
-	return ExpType;
+	int Exp = ExpType;
+	if (Exp == 1) {
+		cout<<"Setting Ekspresi : Infiks ";
+	} else if (Exp == 2) {
+		cout<<"Setting Ekspresi : Posfiks ";
+	}
+	else {
+		cout<<"Setting Ekspresi : Prefiks ";
+	}
+	return Exp;
 }
 
 void Calculator::setMode(int M) {
@@ -152,9 +176,9 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
-			
 			oprConverter.setExpression(Cmd);
 			Cmd = oprConverter.toArabicExpression();
+			//cout<<"A"<<endl;
 			//cout<<"opr converter : "<<Cmd<<endl;
 			
 			// ubah ekspresi ke postfiks
@@ -162,6 +186,7 @@ void Calculator::executeCommand(string Cmd) {
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(Cmd);
 			//cout<<"exp converter : "<<postfiks<<endl;
+			
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
@@ -170,7 +195,6 @@ void Calculator::executeCommand(string Cmd) {
 				if (getNumberType() == ROMAWI_NUMBER) {
 					RomanNumber rom;
 					romnum = rom.toRomanNumber(hasil);
-					//romnum.append(rom.toRomanNumber(hasil));
 					cout<<" Hasil : "<<romnum<<endl;
 					string temp = " = "; temp.append(romnum);
 					cmdHistory.putCommand(Cmd.append(temp));

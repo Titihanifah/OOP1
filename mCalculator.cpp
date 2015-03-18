@@ -12,6 +12,7 @@ int main() {
 	cout<<"Angka arab untuk jenis agka"<<endl;
 	cout<<"Infiks untuk jenis ekspresi"<<endl;
 	c.setMode(1);
+	cout<<"Mode  yang dipilih adalah mode ekspresi"<<endl;
 	cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 	//loop
 	while (1) {
@@ -23,14 +24,17 @@ int main() {
 		cmd = ttemp;
 		//cout<<cmd<<endl;
 		//printf("%s", ttemp);
-		getchar();
+		//getchar();
 		if (cmd.compare("Set") == 0) {
 			c.setMode(2); cout<<endl;
-			cout<<"Mode yang dipilih adalah mode settings"<<endl;
 			c.executeCommand(cmd);
+			
+			cout<<"Settings yang sedang digunakan : "<<endl;
+			cout<<c.getOperatorType()<<endl;
+			cout<<c.getNumberType()<<endl;
+			cout<<c.getExpressionType()<<endl<<endl;
 		}
 		else {
-			cout<<"Mode yang dipilih adalah mode ekspresi"<<endl;
 			c.executeCommand(cmd);
 		}
 		//c.executeCommand(cmd);
