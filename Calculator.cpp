@@ -121,7 +121,7 @@ void redo(int n)
 				sscanf(ttemp,"%s",tttemp);
 				if (strcmp(ttemp,"arith") == 0) setOperatorType(ARITMATIKA_OPERATOR);
 				if (strcmp(ttemp,"logic") == 0) setOperatorType(LOGIKA_OPERATOR);
-				if (strcmp(ttemp,"rel") == 0) setOperatorType(RELATIONAL_OPERATOR);
+				//if (strcmp(ttemp,"rel") == 0) setOperatorType(RELATIONAL_OPERATOR);
 			}
 			else if (strcmp(ttemp,"num") == 0)
 			{

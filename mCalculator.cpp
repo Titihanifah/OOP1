@@ -12,7 +12,7 @@ int main() {
 	cout<<" 2. Settings (Set) "<<endl<<endl;
 	cout<<"Mode yang dipilih : ";
 	cin>>Mode; cout<<endl;
-	c.setMode(Mode);
+	c.setMode(Mode);//
 
 	if (c.getMode() == 2) {
 		cmd = "Set";
