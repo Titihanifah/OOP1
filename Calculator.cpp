@@ -67,7 +67,6 @@ void Calculator::executeCommand(string Cmd) {
 	string ekspresi, postfiks, romnum;
 	int hasil;
 	if (getMode() == 2) { // mode settings
-		if (Cmd == "Set") {
 			string input;
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			cout<<"1. Ketik 'opr' untuk set operator"<<endl;
@@ -137,8 +136,7 @@ void Calculator::executeCommand(string Cmd) {
 					cout<<"4. Ketik 'Exit' untuk kembali menu utama"<<endl;
 					cout<<"----------------------------------------------------------------------------------------------"<<endl;
 					cin>>input;
-				}
-		}	
+				}	
 	}
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
@@ -217,35 +215,5 @@ void Calculator::executeCommand(string Cmd) {
 			}
 		}
 	}
-	if (Cmd[0] ==  'S' && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
-		cmdHistory.putCommand(Cmd);
-		char* s = (char*) Cmd.c_str();
-		int n;
-		sscanf("%s %d" , s, n);
-		cmdHistory.showMem(n);
-	}
-	else if (Cmd ==  "ShowAll") {
-		cmdHistory.putCommand(Cmd);
-		cmdHistory.showAll();
-	}
-	else if (Cmd[0] ==  'R' && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
-		cmdHistory.putCommand(Cmd);
-		char* s = (char*) Cmd.c_str();
-		int n;
-		sscanf("%s %d" , s, n);
-		
-		cmdHistory.redo(n);
-	}
-	else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
-		cmdHistory.putCommand(Cmd);
-		char* s = (char*) Cmd.c_str();
-		int n;
-		sscanf("%s %d" , s, n);
-		
-		cmdHistory.undo(n);
-	}
-	else if (Cmd ==  "Save") {
-		cmdHistory.putCommand(Cmd);
-		cmdHistory.save();
-	}
 }
+	

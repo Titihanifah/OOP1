@@ -7,32 +7,20 @@ int main() {
 	string cmd, exp;
 	system("CLS");
 	cout<<"Calclulator"<<endl<<endl;
-	cout<<" Masukan mode calculator : "<<endl;
-	cout<<" 1. Ekspresi "<<endl;
-	cout<<" 2. Settings (Set) "<<endl<<endl;
-	cout<<"Mode yang dipilih : ";
-	cin>>Mode; cout<<endl;
-	c.setMode(Mode);//
-
-	if (c.getMode() == 2) {
-		cmd = "Set";
-		c.executeCommand(cmd);
-		c.setMode(1);
-		cout<<endl;
+	cout<<"Settings awal pada calculator ini adalah :"<<endl;
+	cout<<"Aritmatika untuk jenis operator"<<endl;
+	cout<<"Angka arab untuk jenis agka"<<endl;
+	cout<<"Postfiks untuk jenis ekspresi"<<endl;
+	c.setMode(1);
+	while (1) {
 		cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 		cout<<"Masukan command : ";
 		cin.ignore();
-		getline(cin,cmd); cout<<endl; cout<<endl;
+		getline(cin,cmd); cout<<endl;
+		if (cmd == "Set") {
+			c.setMode(2); cout<<endl;
+		}
 		c.executeCommand(cmd);
-	}
-	else if (c.getMode() == 1) {
-		cout<<endl;
-		cout<<"-----------------------------------------------------------------------------------------------"<<endl;
-		cout<<"Masukan command : ";
-		cin.ignore();
-		getline(cin,cmd); cout<<endl; cout<<endl;
-		c.executeCommand(cmd);
-
 	}
 	
 	return 0;
