@@ -4,7 +4,7 @@
 #ifndef LOGICNUMBER_H
 #define LOGICNUMBER_H
 using namespace std;
-class LogicNumber: public number{
+class LogicNumber: public Number{
 	private:
 	//data member
 	string StrValue;
