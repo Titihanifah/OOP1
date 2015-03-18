@@ -2,7 +2,7 @@
 #include <iostream>
 
 ArabicNumber::ArabicNumber() {
-	StrValue = " ";
+	StrValue = "";
 }
 ArabicNumber::ArabicNumber(string s) {
 	StrValue = s;

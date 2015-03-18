@@ -202,12 +202,14 @@ void Calculator::executeCommand(string Cmd) {
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
+				cmdHistory.redo(n);
 			}
 			else if ((Cmd[0] ==  'U' || Cmd[0] ==  'u') && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				cmdHistory.putCommand(Cmd);
 				char* s = (char*) Cmd.c_str();
 				int n;
 				sscanf("%s %d" , s, n);
+				cmdHistory.undo(n);
 			}
 			else if (Cmd ==  "Save") {
 				cmdHistory.putCommand(Cmd);
