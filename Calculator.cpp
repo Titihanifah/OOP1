@@ -4,7 +4,7 @@ using namespace std;
 //ctor
 Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = 1;
-	NumType = 1;
+	NumType = LOGIC_NUMBER;
 	ExpType = 1;
 	Mode = 1;
 	//CommandHistory cmdHistory;
@@ -68,7 +68,7 @@ void Calculator::executeCommand(string Cmd) {
 	int hasil;
 	if (getMode() == 2) { // mode settings
 			string input;
-			char* temp;
+			char temp[20];
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			cout<<"1. Ketik 'opr' untuk set operator"<<endl;
 			cout<<"2. Ketik 'num' untuk set number"<<endl;
@@ -148,12 +148,11 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
-			if (getNumberType() == ROMAWI_NUMBER) {
-				// ubah operand ke arabic
-				oprConverter.setExpression(Cmd);
-				Cmd = oprConverter.toArabicExpression();
-				//cout<<"opr converter : "<<Cmd<<endl;
-			}
+			
+			oprConverter.setExpression(Cmd);
+			Cmd = oprConverter.toArabicExpression();
+			cout<<"opr converter : "<<Cmd<<endl;
+			
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
