@@ -29,8 +29,8 @@ class Calculator {
 		Calculator();//ctor
 		Calculator(const Calculator&);//cctor
 		~Calculator();//dtor
-		const static int POSTFIKS_OPERATOR = 1;
-		const static int INFIKS_OPERATOR = 2;
+		const static int POSTFIKS_OPERATOR = 2;
+		const static int INFIKS_OPERATOR = 1;
 		const static int PREFIKS_OPERATOR = 3;
 		const static int ARITMATIKA_OPERATOR = 1;
 		const static int LOGIKA_OPERATOR = 2;

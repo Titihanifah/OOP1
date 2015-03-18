@@ -11,11 +11,19 @@ class ArabicNumber : public Number {
 		int numberConverter(char);
 	public :
 		ArabicNumber();
+		/* ctor untuk kelas Arabic Number */
+		/*Insialisasi StrValue dengan " " */
 		ArabicNumber(string);
+		/* ctor berparameter untuk kelas Arabic Number */
+		/* Insialisasi StrValue dengan string s */
 		ArabicNumber(const ArabicNumber&);
+		/*cctor pada kelas Arabic Number */
 		~ArabicNumber();
-		string getStrValue(); // fungsi untuk mengambil StrValue
-		long long toArabicNumber(); // fungsi untuk mengubah string ke integer
+		/*dtor pada kelas Arabic Number */
+		string getStrValue(); 
+		/* fungsi untuk mengambil StrValue */
+		long long toArabicNumber(); 
+		/* fungsi untuk mengubah string ke integer */
 };
 #endif
 	

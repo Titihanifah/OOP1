@@ -6,9 +6,8 @@ using namespace std;
 
 class ExpressionConverter {
   public :
-	//data member
-	const static int POSTFIKS_OPERATOR = 1;
-	const static int INFIKS_OPERATOR = 2;
+	const static int POSTFIKS_OPERATOR = 2;
+	const static int INFIKS_OPERATOR = 1;
 	const static int PREFIKS_OPERATOR = 3;
 	string toPostfix(string);
 	void setExpType(int);
