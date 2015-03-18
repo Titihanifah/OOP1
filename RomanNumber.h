@@ -19,7 +19,7 @@ class RomanNumber :public Number{
 	RomanNumber(const RomanNumber&);
 	~RomanNumber();
 	string getStrValue(); //mengambil data member StrValue
-	int toArabicNumber(); // menngubah data member ke arabic number
+	long long toArabicNumber(); // menngubah data member ke arabic number
 	string toRomanNumber(int); // mengubah arabic number ke roman number
 };
 #endif

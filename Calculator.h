@@ -36,6 +36,7 @@ class Calculator {
 		const static int LOGIKA_OPERATOR = 2;
 		const static int ARABIC_NUMBER = 1;
 		const static int ROMAWI_NUMBER = 2;
+		const static int LOGIC_NUMBER = 3;
 		const static int MODE_HITUNG = 1;
 		const static int MODE_SETTING = 2;
 		

@@ -7,7 +7,7 @@ int main(){
 	cin>> s;
 	RomanNumber n(s);
 	int res=n.toArabicNumber();
-	printf("arabic=%d\n",res);
+	//printf("arabic=%d\n",res);
 	cout<<"back to Roman= "<<n.toRomanNumber(res)<<endl;
 	return 0;
 }

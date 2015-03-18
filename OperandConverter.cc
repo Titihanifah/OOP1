@@ -1,8 +1,11 @@
 #include "OperandConverter.h"
+#include "Calculator.h"
 using namespace std;
 
-OperandConverter::OperandConverter()
-{}
+OperandConverter::OperandConverter(Calculator* calculator)
+{
+	this->calculator = calculator;
+}
 
 void OperandConverter::setExpression(string in)
 {
@@ -17,10 +20,12 @@ int OperandConverter::isOperator(char in)
 	if (in == '/') return 1;
 	if (in == '*') return 1;
 	if (in == '%') return 1;
-	if (in == '&') return 2;
-	if (in == '|') return 2;
-	if (in == '!') return 2;
-	if (in == '^') return 2;
+	if (in == '&') return 1;
+	if (in == '|') return 1;
+	if (in == '!') return 1;
+	if (in == '^') return 1;
+	if (in == '(') return 1;
+	if (in == ')') return 1;
 	return 0;
 }
 	
@@ -31,12 +36,9 @@ string OperandConverter::toArabicExpression()
 	string spc = " ";
 	int mode = 1; // 1 : previous operator 2 : previous operand
 	int flag = 1, space = 0;
-	
-	for (int i=0;i<romawiExpression.length();i++)
-	{
-		if (flag!=0) break;
-		flag = isOperator(romawiExpression[i]);
-	}
+	if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) Number* num = new ArabicNumber();
+	if (calculator->getNumberType() == Calculator::ROMAWI_NUMBER) Number* num = new RomawiNumber();
+	if (calculator->getNumberType() == Calculator::LOGIC_NUMBER) Number* num = new LogicNumber();
 	
 	for (int i=0;i<romawiExpression.length();i++)
 	{
@@ -55,6 +57,13 @@ string OperandConverter::toArabicExpression()
 			}
 			
 			// previous is operand
+			int xx = num->toArabicNumber();
+			ostringstream convert;convert << xx;
+			
+			res.append(convert.str()); // append operand
+			res.append(spc); // append space
+			temp = "";
+			/*
 			if (flag == 1)
 			{
 				RomanNumber n(temp);
@@ -73,7 +82,7 @@ string OperandConverter::toArabicExpression()
 				res.append(convert.str()); // append operand
 				res.append(spc); // append space
 				temp = "";
-			}
+			}*/
 		}
 		else
 		{

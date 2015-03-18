@@ -6,5 +6,6 @@
 class Number {
   protected : 
 	virtual std::string getStrValue() = 0;
+	virtual long long toArabicNumber() = 0;
 };
 #endif

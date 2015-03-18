@@ -4,7 +4,7 @@
 #ifndef LOGICNUMBER_H
 #define LOGICNUMBER_H
 using namespace std;
-class LogicNumber{
+class LogicNumber: public Number{
 	private:
 	//data member
 	string StrValue;
@@ -15,6 +15,7 @@ class LogicNumber{
 	LogicNumber(const LogicNumber&);
 	~LogicNumber();
 	string getStrValue();
-	int toArabicNumber();
+	long long toArabicNumber();
+	string toLogicNumber(int);
 };
 #endif

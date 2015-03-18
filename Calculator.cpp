@@ -2,17 +2,17 @@
 #include "Calculator.h"
 using namespace std;
 //ctor
-Calculator::Calculator():cmdHistory(this) {
+Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = 1;
 	NumType = 1;
 	ExpType = 1;
 	Mode = 1;
 	//CommandHistory cmdHistory;
-	OperandConverter oprConverter;
-	ExpressionConverter expConverter;
-	ExpressionEvaluator expEvaluator;
+	//OperandConverter oprConverter;
+	//ExpressionConverter expConverter;
+	//ExpressionEvaluator expEvaluator;
 }
-Calculator::Calculator(const Calculator& c) :cmdHistory(this) {
+Calculator::Calculator(const Calculator& c) :cmdHistory(this),oprConverter(this) {
 	OprType = c.OprType;
 	NumType = c.NumType;
 	ExpType = c.ExpType;
@@ -146,7 +146,7 @@ void Calculator::executeCommand(string Cmd) {
 			if (getNumberType() == ROMAWI_NUMBER) {
 				// ubah operand ke arabic
 				oprConverter.setExpression(Cmd);
-				ekspresi = oprConverter.toArabicExpression();
+				Cmd = oprConverter.toArabicExpression();
 				//cout<<ekspresi<<endl;
 			}
 			// ubah ekspresi ke postfiks
