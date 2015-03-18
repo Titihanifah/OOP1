@@ -126,16 +126,16 @@ void Calculator::executeCommand(string Cmd) {
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(ekspresi);
-			//cout<<postfiks<<endl;
+			cout<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
-				expEvaluator.setExpression(ekspresi);
+				expEvaluator.setExpression(postfiks);
 				//cout<<ekspresi<<endl;
 				hasil = expEvaluator.calculateArith();
 				cout<<"Hasil : "<<hasil<<endl;
 			}
 			else if (getOperatorType() == 2) { // operator logic
-				expEvaluator.setExpression(ekspresi);
+				expEvaluator.setExpression(postfiks);
 				hasil = expEvaluator.calculateLogic();
 				cout<<"Hasil : "<<hasil<<endl;
 			}
