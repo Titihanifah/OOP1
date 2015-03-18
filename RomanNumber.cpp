@@ -14,8 +14,9 @@ RomanNumber::~RomanNumber(){}
 string RomanNumber::getStrValue(){
 	return StrValue;
 }
+
 long long RomanNumber:: toArabicNumber(){
-	int sum=0; int prev=0;
+	long long sum=0, prev=0;
 	for(int i=(StrValue.length()-1); i>=0; i--){
 		//printf("prev=%d\n",prev);
 		if(digitToArabic(StrValue[i])<prev){

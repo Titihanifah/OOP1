@@ -3,9 +3,9 @@
 using namespace std;
 //ctor
 Calculator::Calculator():cmdHistory(this),oprConverter(this) {
-	OprType = 1;
-	NumType = 1;
-	ExpType = 1;
+	OprType = ARITMATIKA_OPERATOR;
+	NumType = ARABIC_NUMBER;
+	ExpType = INFIKS_OPERATOR;
 	Mode = 1;
 	//CommandHistory cmdHistory;
 	//OperandConverter oprConverter;
@@ -68,7 +68,7 @@ void Calculator::executeCommand(string Cmd) {
 	int hasil;
 	if (getMode() == 2) { // mode settings
 			string input;
-			char* temp;
+			char temp[256];
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			cout<<"1. Ketik 'opr' untuk set operator"<<endl;
 			cout<<"2. Ketik 'num' untuk set number"<<endl;
@@ -148,22 +148,21 @@ void Calculator::executeCommand(string Cmd) {
 	if (getMode() == 1) {
 		if (isExpression(Cmd) == 1) {
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
-			if (getNumberType() == ROMAWI_NUMBER) {
-				// ubah operand ke arabic
-				oprConverter.setExpression(Cmd);
-				Cmd = oprConverter.toArabicExpression();
-				//cout<<"opr converter : "<<Cmd<<endl;
-			}
+			
+			oprConverter.setExpression(Cmd);
+			Cmd = oprConverter.toArabicExpression();
+			//cout<<"opr converter : "<<Cmd<<endl;
+			
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(Cmd);
-			cout<<"exp converter : "<<postfiks<<endl;
+			//cout<<"exp converter : "<<postfiks<<endl;
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
 				hasil = expEvaluator.calculateArith();
-				cout<<"evaluator : "<<hasil<<endl;
+				//cout<<"evaluator : "<<hasil<<endl;
 				if (getNumberType() == ROMAWI_NUMBER) {
 					RomanNumber rom;
 					romnum = rom.toRomanNumber(hasil);
@@ -184,10 +183,12 @@ void Calculator::executeCommand(string Cmd) {
 			else if (getOperatorType() == 2) { // operator logic
 				expEvaluator.setExpression(postfiks);
 				hasil = expEvaluator.calculateLogic();
-				cout<<" Hasil : "<<hasil<<endl;
-				ostringstream convert;
-				convert << hasil;
-				string temp = " = "; temp.append(convert.str());
+				
+				LogicNumber logg;
+				string res = logg.toLogicNumber(hasil);
+				cout<<" Hasil : "<<res<<endl;
+
+				string temp = " = "; temp.append(res);
 				cmdHistory.putCommand(Cmd.append(temp));
 				cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 			}

@@ -17,8 +17,8 @@ int main() {
 		cout<<"-----------------------------------------------------------------------------------------------"<<endl;
 		cout<<"Masukan command : ";
 		//cin.ignore();
-		char temp[20];
-		cin.getline(temp,20); cout<<endl;
+		char temp[256];
+		cin.getline(temp,256); cout<<endl;
 		char* ttemp = strdup(temp);
 		cmd = ttemp;
 		cout<<cmd<<endl;
