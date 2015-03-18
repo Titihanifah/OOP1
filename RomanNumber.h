@@ -9,8 +9,10 @@ class RomanNumber :public Number{
 	//data member
 	string StrValue; 
 	//fungsi antara
-	int digitConvert(char); 
+	int digitToArabic(char); 
+	void digitToRoman(int, string &, int &);
 	
+	//method
 	public:
 	RomanNumber();
 	RomanNumber(string);
@@ -18,5 +20,6 @@ class RomanNumber :public Number{
 	~RomanNumber();
 	string getStrValue(); //mengambil data member StrValue
 	int toArabicNumber(); // menngubah data member ke arabic number
+	string toRomanNumber(int); // mengubah arabic number ke roman number
 };
 #endif
