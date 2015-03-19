@@ -16,7 +16,9 @@ using namespace std;
 //!  Class ExpressionEvaluator
 /*!
 	A class that return calculated values from a postfix-expression string
+	
 	I.S "3 4 +"
+	
 	F.S "7"
 */
 class ExpressionEvaluator{

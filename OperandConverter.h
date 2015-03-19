@@ -21,10 +21,13 @@ class Calculator;
 /*!
 	A class to change the types of Operands in a given expression string.
 	Numbers in an expression is converted into Arabic Number ( primitive integer ) for easy calculation later on
+	
 	I.S "VII + I - X"
+	
 	F.S "7 + 1 - 10"
 
 	I.S "true & (false & ! true)"
+	
 	F.S "1 & ( 0 & ! 1)"
 */
 class OperandConverter

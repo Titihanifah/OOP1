@@ -23,9 +23,9 @@ class Calculator;
 */
 class CommandHistory
 {	
-	//! A stack holding user's SET commands that will be used to undo
+	//! A stack holding user's Set commands that will be used to undo
 	Stack<string> undoStack;
-	//! A stack holding user's SET commands that has been undone, so it can be redo
+	//! A stack holding user's Set commands that has been undone, so it can be redo
 	Stack<string> redoStack;
 	//! A stack holding temporary value for iterating and keeping old elements
 	Stack<string> tempStack;
@@ -43,22 +43,22 @@ public:
 	*/
 	CommandHistory(Calculator*);
 	
-	//! putCommand pushes argument into stack
+	//! A function that pushes argument into stack
 	void putCommand(string);
 	
-	//! showMem(n) will print n user's histories into screen
+	//! A function that will print n last user's inputs into screen
 	void showMem(int);
 	
-	//! showAll will print all user's histories into screen
+	//! A function that will print all user's inputs into screen
 	void showAll();
 	
-	//! save will request filename and save all commands in memory to filename
+	//! A function that will request filename and save all histories into filename
 	void save();
 	
-	//! undo(n) will undo n user's last SET commands
+	//! A function that will undo n user's last Set commands
 	void undo(int);
 	
-	//! redo(n) will redo n user's undone SET commands
+	//! A function that will redo n user's undone Set commands
 	void redo(int);
 };
 #endif
