@@ -6,10 +6,10 @@ int main() {
 	int Mode;
 	string cmd;
 	system("CLS");
-	cout<<"Calclulator"<<endl<<endl;
+	cout<<"Calculator"<<endl<<endl;
 	cout<<"Settings awal pada calculator ini adalah :"<<endl;
 	cout<<"Aritmatika untuk jenis operator"<<endl;
-	cout<<"Angka arab untuk jenis agka"<<endl;
+	cout<<"Angka arab untuk jenis angka"<<endl;
 	cout<<"Infiks untuk jenis ekspresi"<<endl;
 	c.setMode(1);
 	cout<<"Mode  yang dipilih adalah mode ekspresi"<<endl;
@@ -33,7 +33,7 @@ int main() {
 			if(c.getOperatorType() == 1) {
 				cout<<"Setting Operator : Operator Aritmatika "<<endl;
 			} else {
-				cout<<"Setting Operator : Operator Logika dan Relasiona "<<endl;
+				cout<<"Setting Operator : Operator Logika dan Relasional "<<endl;
 			}
 			if (c.getNumberType() == 1) {
 				cout<<"Setting Angka : Angka Arab "<<endl;
@@ -46,7 +46,7 @@ int main() {
 			if (c.getExpressionType() == 1) {
 				cout<<"Setting Ekspresi : Infiks "<<endl<<endl;
 			} else if (c.getExpressionType() == 2) {
-				cout<<"Setting Ekspresi : Posfiks "<<endl<<endl;
+				cout<<"Setting Ekspresi : Postfiks "<<endl<<endl;
 			}
 			else {
 				cout<<"Setting Ekspresi : Prefiks "<<endl<<endl;
@@ -70,7 +70,7 @@ int main() {
 			if (c.getExpressionType() == 1) {
 				cout<<"Setting Ekspresi : Infiks "<<endl<<endl;
 			} else if (c.getExpressionType() == 2) {
-				cout<<"Setting Ekspresi : Posfiks "<<endl<<endl;
+				cout<<"Setting Ekspresi : Postfiks "<<endl<<endl;
 			}
 			else {
 				cout<<"Setting Ekspresi : Prefiks "<<endl<<endl;

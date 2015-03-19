@@ -47,32 +47,53 @@ int ExpressionConverter::OperatorPrecedence(char op) {
 }
 
 string ExpressionConverter::toPostfix(string expression) {
+	string postfix = "";
 	if (exp_type == POSTFIKS_OPERATOR)
 	{
-		return expression;
+		string oprnd = "";
+		int mode = 1; // 1 : previous char is space , 0 : previous char is not space
+		int nonspc = expression.length() - 1;
+		while (expression[nonspc] == ' ')
+		{
+			nonspc--;
+		}
+		for (int i = 0; i < expression.length(); i++)
+		{
+			if (expression[i] != ' ')
+			{
+				if (oprnd != "")
+				{
+					oprnd += " ";
+					postfix += oprnd;
+					oprnd = "";
+				}
+				if (isOperator(expression[i]))
+				{
+					postfix.append(1, expression[i]);
+					if (i != nonspc)
+					{
+						postfix.append(1, ' ');
+					}
+				}
+				else
+				{
+					oprnd = expression[i] + oprnd;
+				}
+			}
+		}
+		return postfix;
 	}
-	string postfix = "";
 	if (exp_type == PREFIKS_OPERATOR) 
 	{
 		Stack<string> S;
 		string oprnd = "";
+		int mode = 0; // 1 : previous char is operand , 2 : previous char is operator or space
+		int nonspc = 0; 
+		while (expression[nonspc] == ' ')
+			nonspc++;
 		for (int i = expression.length() - 1; i >= 0; i--)
 		{
-			if (isOperator(expression[i]))
-			{
-				string op1 = "";
-				string op2 = "";
-				S.pop(op1);
-				if (expression[i] != '!')
-					S.pop(op2);
-				op1 = op1 + op2 + expression[i];
-				if (i != 0)
-				{
-					op1 += " ";
-				}
-				S.push(op1);
-			}
-			else if (expression[i] == ' ')
+			if (expression[i] != ' ')
 			{
 				if (oprnd != "")
 				{
@@ -80,30 +101,45 @@ string ExpressionConverter::toPostfix(string expression) {
 					S.push(oprnd);
 					oprnd = "";
 				}
-			}
-			else 
-			{
-				oprnd = expression[i] + oprnd;
+				if (isOperator(expression[i]))
+				{
+					string op1 = "";
+					string op2 = "";
+					S.pop(op1);
+					if (expression[i] != '!')
+						S.pop(op2);
+					op1 = op1 + op2 + expression[i];
+					if (i != nonspc)
+					{
+						op1 += " ";
+					}
+					S.push(op1);
+				}
+				else
+				{
+					oprnd = expression[i] + oprnd;
+				}
 			}
 		}
 		S.pop(postfix);
 	}
-	else if (exp_type == INFIKS_OPERATOR) /* 1 berarti infix */
+	else if (exp_type == INFIKS_OPERATOR) 
 	{
 		Stack<char> S;
 		string stemp = "";
+		int mode = 0; // 1 : previous char is operand 
+		              //2 : previous char is operator that has caused at least one operator has been popped from stack
 		for (int i = 0; i < expression.length(); i++)
 		{
-			if (isOperator(expression[i]) && (expression[i+1] == ' ' || i + 1 == expression.length()))
+			if (isOperator(expression[i]))
 			{
-				if (stemp != "") 
+				if ((mode == 1) && (stemp != ""))
 				{
-					if (postfix != "")
-						postfix += " ";
 					postfix += stemp;
+					postfix.append(1, ' ');
 					stemp = "";
 				}
-				if ((expression[i] == '(') || (S.isEmpty()))
+				if (expression[i] == '(')
 				{
 					S.push(expression[i]);
 				}
@@ -113,8 +149,10 @@ string ExpressionConverter::toPostfix(string expression) {
 					S.pop(op);
 					while (op != '(')
 					{
-						postfix += " ";
+						if (mode != 1)
+							postfix.append(1, ' ');
 						postfix.append(1, op);
+						mode = 2;
 						S.pop(op);
 					}
 					//printf("pp %s\n",postfix.c_str());
@@ -131,27 +169,38 @@ string ExpressionConverter::toPostfix(string expression) {
 						if (OperatorPrecedence(op) >= OperatorPrecedence(expression[i]))
 						{
 							S.pop(op);
-							postfix += " ";
+							if (mode != 1)
+								postfix.append(1, ' ');
 							postfix.append(1, op);
 							S.push(expression[i]);
+							mode = 2;
 						}
 						else
+						{
 							S.push(expression[i]);
+						}
 					}
 				}
 			}
 			else if (expression[i] != ' ')
 			{
-				stemp += expression[i];
+				if (mode == 2)
+					postfix.append(1, ' ');
+				mode = 1;
+				stemp.append(1, expression[i]);
 			}
 		}
-		if (stemp != "")
-			postfix += " " + stemp;
+		if ((mode == 1) && (stemp != ""))
+		{
+			postfix +=stemp;
+			postfix.append(1, ' ');
+		}
 		while (!S.isEmpty())
 		{
 			char op;
 			S.pop(op);
-			postfix += " ";
+			if (mode != 1)
+				postfix.append(1, ' ');
 			postfix.append(1, op);
 		}
 	}
