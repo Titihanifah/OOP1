@@ -108,10 +108,12 @@ void CommandHistory::showAll()
 void CommandHistory::save()
 {
 	// requesting filename for user's output file
+	string filename;
 	printf("  Filename : ");
-	char temp[100];
+	char temp[256];
 	scanf("%s",temp);
-	string filename = temp;
+	filename = temp;
+	//cin>>filename;
 	FILE* fp = fopen(filename.c_str(),"w");
 	
 	time_t t = time(0);   // get time now

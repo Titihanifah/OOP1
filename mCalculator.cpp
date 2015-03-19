@@ -81,7 +81,7 @@ int main() {
 			}
 		}
 		//c.executeCommand(cmd);
-		if (cmd.compare("Set") == 0) {
+		if (cmd.compare("Set") == 0 || cmd.compare("Save") == 0) {
 			cin.ignore();
 		}
 		c.setMode(1);
