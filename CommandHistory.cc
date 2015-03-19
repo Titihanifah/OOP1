@@ -16,7 +16,7 @@ void CommandHistory::putCommand(string in)
 		undoStack.push(temp);
 		// every user's valid input is pushed into save Stack
 		saveStack.push(temp);
-	}else if(in == "arabic" || in == "roman")
+	}else if(in == "arabic" || in == "roman" || in == "logicn")
 	{
 		string temp = "SET num "; // temporary string holding the value of user's input
 		temp.append(string(in));
@@ -93,7 +93,7 @@ void CommandHistory::showAll()
 		string temp;
 		saveStack.pop(temp);
 		tempStack.push(temp);
-		printf("  -    %s\n",temp.c_str());
+		printf(" -    %s\n",temp.c_str());
 	}
 	printf("\n");
 	// popping back all histories back into save Stack
@@ -139,68 +139,62 @@ void CommandHistory::undo(int n)
 	// if user has never change any Settings, then s/he cannot undo
 	if (undoStack.isEmpty())
 	{
-		printf("No SET command(s), No undo.....\n");
+		printf("\nBack to default Settings\n");
+		calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);
+		calculator->setNumberType(Calculator::ARABIC_NUMBER);
+		calculator->setExpressionType(Calculator::INFIKS_OPERATOR);
 		return;
 	}
-	// redo is just for the last undo, so we need to pop every elements in redo Stack whenever user start a new undo commands
-	while (!redoStack.isEmpty())
-	{
-		string temp;
-		redoStack.pop(temp);
-	}
-	for (int i=0;i<n && !undoStack.isEmpty();i++)
+	if (redoStack.isEmpty()) {n++;}
+	int i;
+	for (i=0;i<n && !undoStack.isEmpty();i++)
 	{
 		string temp; // string holding original string of user's input Set commands
 		undoStack.pop(temp);
 		redoStack.push(temp);
 		char* ttemp =(char*) temp.c_str(); // temporary value to hold last user's Set commands
-		char* tttemp[100];
-		// takes the first word in user's Set commands
-		sscanf(ttemp,"%s",tttemp);
-		if (strcmp(ttemp,"SET") == 0)
+		char tttemp[256],ttttemp[256],tttttemp[256];
+		
+		// extract the first, second and third word in user's Set commands
+		sscanf(ttemp,"%s %s %s",tttemp, ttttemp, tttttemp);
+		if (strcmp(tttemp,"SET") == 0)
 		{
-			// takes the second word in user's Set commands
-			sscanf(ttemp,"%s",tttemp);
-			
 			// if user's command Set operator mode
-			if (strcmp(ttemp,"opr") == 0)
+			if (strcmp(ttttemp,"opr") == 0)
 			{
-				// takes the third word in user's Set commands
-				sscanf(ttemp,"%s",tttemp);
-				
 				// if user's command Set operator arithmetic mode ( + , - , / , * , % )
-				if (strcmp(ttemp,"arith") == 0) {printf("AA\n");calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);}
+				if (strcmp(tttttemp,"arith") == 0) {calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);}
 				// if user's command Set operator logic mode ( & , | , ^ , ! , < , > , = )
-				if (strcmp(ttemp,"logic") == 0) {printf("BB\n");calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);}
+				if (strcmp(tttttemp,"logic") == 0) {calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);}
 			}
 			// if user's command Set number mode
-			else if (strcmp(ttemp,"num") == 0)
+			else if (strcmp(ttttemp,"num") == 0)
 			{
-				// takes the third word in user's Set commands
-				sscanf(ttemp,"%s",tttemp);
-				
 				// if user's command Set number mode to Arabic
-				if (strcmp(ttemp,"arabic") == 0) {printf("CC\n");calculator->setNumberType(Calculator::ARABIC_NUMBER);}
+				if (strcmp(tttttemp,"arabic") == 0) {calculator->setNumberType(Calculator::ARABIC_NUMBER);}
 				// if user's command Set number mode to Romawi
-				if (strcmp(ttemp,"roman") == 0) {printf("DD\n");calculator->setNumberType(Calculator::ROMAWI_NUMBER);}
+				if (strcmp(tttttemp,"roman") == 0) {calculator->setNumberType(Calculator::ROMAWI_NUMBER);}
 				// if user's command Set number mode to Logic ( true , false )
-				if (strcmp(ttemp,"logic") == 0) {printf("EE\n");calculator->setNumberType(Calculator::LOGIC_NUMBER);}
+				if (strcmp(tttttemp,"logicn") == 0) {calculator->setNumberType(Calculator::LOGIC_NUMBER);}
 			}
 			// if user's command Set expression mode
-			else if (strcmp(ttemp,"exp") == 0)
+			else if (strcmp(ttttemp,"exp") == 0)
 			{
-				// takes the third word in user's Set commands
-				sscanf(ttemp,"%s",tttemp);
-				
 				// if user's command Set expression mode to postfix
-				if (strcmp(ttemp,"post") == 0) {printf("FF\n");calculator->setExpressionType(Calculator::POSTFIKS_OPERATOR);}
+				if (strcmp(tttttemp,"post") == 0) {calculator->setExpressionType(Calculator::POSTFIKS_OPERATOR);}
 				// if user's command Set expression mode to infix
-				if (strcmp(ttemp,"in") == 0) {printf("GG\n");calculator->setExpressionType(Calculator::INFIKS_OPERATOR);}
+				if (strcmp(tttttemp,"in") == 0) {calculator->setExpressionType(Calculator::INFIKS_OPERATOR);}
 				// if user's command Set expression mode to prefix
-				if (strcmp(ttemp,"pref") == 0) {printf("HH\n");calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);}
+				if (strcmp(tttttemp,"pref") == 0) {calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);}
 			}
 		}
-		printf("successful\n");
+	}
+	if ((i>=n && undoStack.isEmpty()) || undoStack.isEmpty())
+	{
+		printf("\nBack to default Settings\n");
+		calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);
+		calculator->setNumberType(Calculator::ARABIC_NUMBER);
+		calculator->setExpressionType(Calculator::INFIKS_OPERATOR);
 	}
 }
 
@@ -209,7 +203,7 @@ void CommandHistory::redo(int n)
 	// if user has never undo anything, then s/he cannot redo
 	if (redoStack.isEmpty())
 	{
-		printf("No undo, No redoooo....\n");
+		//printf("Redo has reached the end\n");
 		return;
 	}
 	for (int i=0;i<n && !redoStack.isEmpty();i++)
@@ -218,47 +212,37 @@ void CommandHistory::redo(int n)
 		redoStack.pop(temp);
 		undoStack.push(temp);
 		char* ttemp =(char*) temp.c_str(); // temporary value to hold last user's Set commands
-		char* tttemp[100];
-		sscanf(ttemp,"%s",tttemp);
-		// takes the first word in user's Set commands
-		if (strcmp(ttemp,"SET") == 0)
+		char tttemp[256],ttttemp[256],tttttemp[256];
+		
+		// extract the first, second and third word in user's Set commands
+		sscanf(ttemp,"%s %s %s",tttemp, ttttemp, tttttemp);
+		if (strcmp(tttemp,"SET") == 0)
 		{
-			// takes the second word in user's Set commands
-			sscanf(ttemp,"%s",tttemp);
 			// if user's command Set operator mode
-			if (strcmp(ttemp,"opr") == 0)
-			{
-				// takes the third word in user's Set commands
-				sscanf(ttemp,"%s",tttemp);
-				
+			if (strcmp(ttttemp,"opr") == 0)
+			{	
 				// if user's command Set operator arithmetic mode ( + , - , / , * , % )
-				if (strcmp(ttemp,"arith") == 0) calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);
+				if (strcmp(tttttemp,"arith") == 0) {calculator->setOperatorType(Calculator::ARITMATIKA_OPERATOR);}
 				// if user's command Set operator logic mode ( & , | , ^ , ! , < , > , = )
-				if (strcmp(ttemp,"logic") == 0) calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);
+				if (strcmp(tttttemp,"logic") == 0) {calculator->setOperatorType(Calculator::LOGIKA_OPERATOR);}
 			}
-			else if (strcmp(ttemp,"num") == 0)
+			else if (strcmp(ttttemp,"num") == 0)
 			{
-				// takes the third word in user's Set commands
-				sscanf(ttemp,"%s",tttemp);
-				
 				// if user's command Set number mode to Arabic ( 1 , 30 , 1000 )
-				if (strcmp(ttemp,"arabic") == 0) calculator->setNumberType(Calculator::ARABIC_NUMBER);
+				if (strcmp(tttttemp,"arabic") == 0) {calculator->setNumberType(Calculator::ARABIC_NUMBER);}
 				// if user's command Set number mode to Romawi ( I , XXX , M )
-				if (strcmp(ttemp,"roman") == 0) calculator->setNumberType(Calculator::ROMAWI_NUMBER);
+				if (strcmp(tttttemp,"roman") == 0) {calculator->setNumberType(Calculator::ROMAWI_NUMBER);}
 				// if user's command Set number mode to Logic ( true , false )
-				if (strcmp(ttemp,"logic") == 0) calculator->setNumberType(Calculator::LOGIC_NUMBER);
+				if (strcmp(tttttemp,"logicn") == 0) {calculator->setNumberType(Calculator::LOGIC_NUMBER);}
 			}
-			else if (strcmp(ttemp,"exp") == 0)
+			else if (strcmp(ttttemp,"exp") == 0)
 			{
-				// takes the third word in user's Set commands
-				sscanf(ttemp,"%s",tttemp);
-				
 				// if user's command Set expression mode to postfix
-				if (strcmp(ttemp,"post") == 0) calculator->setExpressionType(Calculator::POSTFIKS_OPERATOR);
+				if (strcmp(tttttemp,"post") == 0) {calculator->setExpressionType(Calculator::POSTFIKS_OPERATOR);}
 				// if user's command Set expression mode to infix
-				if (strcmp(ttemp,"in") == 0) calculator->setExpressionType(Calculator::INFIKS_OPERATOR);
+				if (strcmp(tttttemp,"in") == 0) {calculator->setExpressionType(Calculator::INFIKS_OPERATOR);}
 				// if user's command Set expression mode to prefix
-				if (strcmp(ttemp,"pref") == 0) calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);
+				if (strcmp(tttttemp,"pref") == 0) {calculator->setExpressionType(Calculator::PREFIKS_OPERATOR);}
 			}
 		}	
 	}

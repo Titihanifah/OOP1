@@ -99,7 +99,7 @@ void Calculator::executeCommand(string Cmd) {
 						string inputnum;
 						cout<<"2.1 Ketik 'arabic' untuk set number menjadi arabic"<<endl;
 						cout<<"2.2 Ketik 'roman' untuk set number menjadi romawi"<<endl;
-						cout<<"2.3 Ketik 'logic' untuk set number menjadi logic"<<endl;
+						cout<<"2.3 Ketik 'logicn' untuk set number menjadi logic"<<endl;
 						cout<<"----------------------------------------------------------------------------------------------"<<endl;
 						scanf("%s" , temp);
 						inputnum = temp;
@@ -111,7 +111,7 @@ void Calculator::executeCommand(string Cmd) {
 						else if (inputnum == "roman") {
 							setNumberType(ROMAWI_NUMBER);
 						}
-						else if (inputnum == "logic") {
+						else if (inputnum == "logicn") {
 							setNumberType(LOGIC_NUMBER);
 						}
 					}
@@ -199,7 +199,7 @@ void Calculator::executeCommand(string Cmd) {
 		else if (isExpression(Cmd) == 0) { // bukan ekspresi
 			if (Cmd[0] ==  'S'  && Cmd[1] ==  'h' && Cmd[2] ==  'o' && Cmd[3] ==  'w' && Cmd[4] ==  'M' && Cmd[5] ==  'e' && Cmd[6] ==  'm') {
 				char* s = (char*) Cmd.c_str();
-				char* ss[100];
+				char ss[256];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
 				//cout<<"n : "<<n;
@@ -207,12 +207,12 @@ void Calculator::executeCommand(string Cmd) {
 				cmdHistory.putCommand(Cmd);
 			}
 			else if (Cmd ==  "ShowAll") {
-				cmdHistory.putCommand(Cmd);
 				cmdHistory.showAll();
+				cmdHistory.putCommand(Cmd);
 			}
 			else if (Cmd[0] ==  'R'  && Cmd[1] ==  'e' && Cmd[2] ==  'd' && Cmd[3] ==  'o') {
 				char* s = (char*) Cmd.c_str();
-				char* ss[100];
+				char ss[256];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
 				//cout<<"n : "<<n<<endl;
@@ -221,7 +221,7 @@ void Calculator::executeCommand(string Cmd) {
 			}
 			else if (Cmd[0] ==  'U' && Cmd[1] ==  'n' && Cmd[2] ==  'd' && Cmd[3] ==  'o') { 
 				char* s = (char*) Cmd.c_str();
-				char* ss[100];
+				char ss[256];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
 				//cout<<"n : "<<n<<endl;
@@ -229,8 +229,8 @@ void Calculator::executeCommand(string Cmd) {
 				cmdHistory.putCommand(Cmd);
 			}
 			else if (Cmd ==  "Save") {
-				cmdHistory.putCommand(Cmd);
 				cmdHistory.save();
+				cmdHistory.putCommand(Cmd);
 			}
 		}
 	}

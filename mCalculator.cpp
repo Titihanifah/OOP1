@@ -6,11 +6,13 @@ int main() {
 	int Mode;
 	string cmd;
 	system("CLS");
-	cout<<"Calclulator"<<endl<<endl;
+	cout<<"-----------------------------------------------------------------------------------------------"<<endl;
+	cout<<"Calculator"<<endl;
+	cout<<"-----------------------------------------------------------------------------------------------"<<endl<<endl;
 	cout<<"Settings awal pada calculator ini adalah :"<<endl;
 	cout<<"Aritmatika untuk jenis operator"<<endl;
 	cout<<"Angka arab untuk jenis agka"<<endl;
-	cout<<"Infiks untuk jenis ekspresi"<<endl;
+	cout<<"Infiks untuk jenis ekspresi"<<endl<<endl;
 	c.setMode(1);
 	cout<<"Mode  yang dipilih adalah mode ekspresi"<<endl;
 	cout<<"-----------------------------------------------------------------------------------------------"<<endl;
@@ -29,7 +31,7 @@ int main() {
 			c.setMode(2); cout<<endl;
 			c.executeCommand(cmd);
 			system("CLS");
-			cout<<"Settings yang sedang digunakan : "<<endl;
+			cout<<endl<<"Settings yang sedang digunakan : "<<endl;
 			if(c.getOperatorType() == 1) {
 				cout<<"Setting Operator : Operator Aritmatika "<<endl;
 			} else {
