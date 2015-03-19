@@ -83,13 +83,19 @@ public:
 	/**
 	* A function that will undo n user's last Set commands
 	* 
-	* I.S Last user's set options
+	* I.S Current settings is Last user's set options
 	*
 	* F.S Current settings is final 
 	*/
 	void undo(int);
 	
-	//! A function that will redo n user's undone Set commands
+	/**
+	* A function that will redo n user's undone Set commands
+	* 
+	* I.S Current settings is Last user's undo set options
+	*
+	* F.S Current settings is next n of current user's settings 
+	*/
 	void redo(int);
 };
 #endif
