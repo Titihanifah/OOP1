@@ -39,18 +39,9 @@ string OperandConverter::toArabicExpression(){
 	
 	for (int i=0;i<expression.length();i++)
 	{
-		if (isOperator(expression[i]))
+		if ((isOperator(expression[i])) || (expression[i] == ' '))
 		{
-			// set mode to 1
-			mode = 1;
-			// merely append the current character if it is an operator
-			res.append(string(1,expression[i]));
-		}
-		else if (expression[i] == ' ')
-		{
-		    //mode = 1 : if previous character is an operator
-			if (mode == 1) res.append(spc);
-			else // mode = 2 : if previous character is an operand
+			if (mode == 1)
 			{
 				//check the calculator's, which holds this object, number type settings
 				if (calculator->getNumberType() == Calculator::ARABIC_NUMBER) {num = new ArabicNumber(temp);}
@@ -66,14 +57,12 @@ string OperandConverter::toArabicExpression(){
 			// set mode to 2
 			mode = 2;
 			// merely append the current character if it is an operator or space
-			res.append(string(1,romawiExpression[i]));
+			res.append(string(1,expression[i]));
 		}
 		else 
 		{
-			// set mode to 2 : which means previous character is an operand
-			mode = 2;
-			// buffering current operand
-			temp.append(string(1,expression[i]));
+			mode = 1;
+			temp.append(1, expression[i]);
 		}
 	}
 	
