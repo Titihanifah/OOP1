@@ -8,7 +8,6 @@
 #include "OperandConverter.h"
 #include "ExpressionConverter.h"
 #include "ExpressionEvaluator.h"
-#include "Stack.h"
 #include <sstream>
 using namespace std;
 //! Class Calculator.
@@ -17,13 +16,13 @@ using namespace std;
 */
 class Calculator {
 	private :
-		//! varibael tipe operator
+		//! variabel tipe operator
 		int OprType;
-		//! varibael tipe nomor
+		//! variabel tipe nomor
 		int NumType;
-		//! varibael tipe ekspresi
+		//! variabel tipe ekspresi
 		int ExpType;
-		//! varibael tipe mode
+		//! variabel tipe mode
 		int Mode;
 		//! objek yang dibentuk dari CommandHistory
 		CommandHistory cmdHistory;

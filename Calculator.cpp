@@ -6,18 +6,12 @@ Calculator::Calculator():cmdHistory(this),oprConverter(this) {
 	OprType = ARITMATIKA_OPERATOR;
 	NumType = ARABIC_NUMBER;
 	ExpType = INFIKS_OPERATOR;
-	//Mode = 1;
-	//CommandHistory cmdHistory;
-	//OperandConverter oprConverter;
-	//ExpressionConverter expConverter;
-	//ExpressionEvaluator expEvaluator;
 }
 Calculator::Calculator(const Calculator& c) :cmdHistory(this),oprConverter(this) {
 	OprType = c.OprType;
 	NumType = c.NumType;
 	ExpType = c.ExpType;
 	Mode = c.Mode;
-	//CommandHistory cmdHistory;
 }	
 Calculator::~Calculator() {}
 
@@ -154,19 +148,16 @@ void Calculator::executeCommand(string Cmd) {
 			cout<<"----------------------------------------------------------------------------------------------"<<endl;
 			oprConverter.setExpression(Cmd);
 			Cmd = oprConverter.toArabicExpression();
-			//cout<<"opr converter : "<<Cmd<<endl;
 			
 			// ubah ekspresi ke postfiks
 			int exp = getExpressionType();
 			expConverter.setExpType(exp);
 			postfiks = expConverter.toPostfix(Cmd);
-			//cout<<"exp converter : "<<postfiks<<endl;
 			
 			// hitung hasil
 			if (getOperatorType() == 1) { // operator arith
 				expEvaluator.setExpression(postfiks);
 				hasil = expEvaluator.calculateArith();
-				//cout<<"evaluator : "<<hasil<<endl;
 				if (getNumberType() == ROMAWI_NUMBER) {
 					RomanNumber rom;
 					romnum = rom.toRomanNumber(hasil);
@@ -202,7 +193,6 @@ void Calculator::executeCommand(string Cmd) {
 				char ss[256];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
-				//cout<<"n : "<<n;
 				cmdHistory.showMem(n);
 				cmdHistory.putCommand(Cmd);
 			}
@@ -215,7 +205,6 @@ void Calculator::executeCommand(string Cmd) {
 				char ss[256];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
-				//cout<<"n : "<<n<<endl;
 				cmdHistory.redo(n);
 				cmdHistory.putCommand(Cmd);
 			}
@@ -224,7 +213,6 @@ void Calculator::executeCommand(string Cmd) {
 				char ss[256];
 				int n;
 				sscanf(s, "%s %d" , ss, &n);
-				//cout<<"n : "<<n<<endl;
 				cmdHistory.undo(n);
 				cmdHistory.putCommand(Cmd);
 			}

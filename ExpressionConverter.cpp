@@ -61,16 +61,14 @@ string ExpressionConverter::toPostfix(string expression) {
 		{
 			if (expression[i] != ' ')
 			{
-				if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && (expression[i+1] == ' ')))
+				if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && ((expression[i+1] == ' ') || (i == nonspc))))
 				{
 					if (oprnd != "")
 					{
 						oprnd += " ";
-						//cout << "oprnd : " << oprnd << endl;
 						postfix += oprnd;
 						oprnd = "";
 					}
-					//cout << "opr : " << expression[i] << endl;
 					postfix.append(1, expression[i]);
 					if (i != nonspc)
 					{
@@ -87,7 +85,6 @@ string ExpressionConverter::toPostfix(string expression) {
 				if (oprnd != "")
 				{
 					oprnd += " ";
-					//cout << "oprnd : " << oprnd << endl;
 					postfix += oprnd;
 					oprnd = "";
 				}
@@ -107,7 +104,7 @@ string ExpressionConverter::toPostfix(string expression) {
 		{
 			if (expression[i] != ' ')
 			{
-				if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && (expression[i+1] == ' ')))
+				if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && ((expression[i+1] == ' ') || i == nonspc)))
 				{
 					if (oprnd != "")
 					{
@@ -176,7 +173,6 @@ string ExpressionConverter::toPostfix(string expression) {
 						mode = 2;
 						S.pop(op);
 					}
-					//printf("pp %s\n",postfix.c_str());
 				}
 				else 
 				{
