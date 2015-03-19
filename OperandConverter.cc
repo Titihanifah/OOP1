@@ -66,7 +66,7 @@ string OperandConverter::toArabicExpression(){
 			// set mode to 2
 			mode = 2;
 			// merely append the current character if it is an operator or space
-			res.append(string(1,romawiExpression[i]));
+			res.append(string(1,expression[i]));
 		}
 		else 
 		{

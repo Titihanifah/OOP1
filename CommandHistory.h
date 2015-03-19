@@ -43,10 +43,22 @@ public:
 	*/
 	CommandHistory(Calculator*);
 	
-	//! A function that pushes argument into stack
+	/**
+	* A function that pushes argument into stack
+	* 
+	* I.S top Stack = previous Argument
+	*
+	* F.S top Stack = argument
+	*/
 	void putCommand(string);
 	
-	//! A function that will print n last user's inputs into screen
+	/**
+	* A function that will print n last user's inputs into screen
+	* 
+	* I.S Screen blank
+	*
+	* F.S top Stack = argument
+	*/
 	void showMem(int);
 	
 	//! A function that will print all user's inputs into screen
