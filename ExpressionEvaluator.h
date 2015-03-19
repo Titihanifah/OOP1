@@ -52,7 +52,13 @@ public:
 	//! A function returning calculated values of a postfix logical - expression
 	int calculateLogic();
 	
-	//! A function that sets current's expression to new expression
+	/*!
+	A function that set the expression this object is holding
+
+	I.S expression = old expression
+	
+	F.S expression = new expression
+	*/
 	void setExpression(string);
 };
 #endif

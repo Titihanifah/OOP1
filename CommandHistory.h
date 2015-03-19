@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <string>
 #include <fstream>
+#include <ctime>
 #include "Stack.h"
 using namespace std;
 
@@ -57,17 +58,35 @@ public:
 	* 
 	* I.S Screen blank
 	*
-	* F.S top Stack = argument
+	* F.S Screen filled with last n user's inputs
 	*/
 	void showMem(int);
 	
-	//! A function that will print all user's inputs into screen
+	/**
+	* A function that will print n last user's inputs into screen
+	* 
+	* I.S Screen blank
+	*
+	* F.S Screen filled with all user's inputs
+	*/
 	void showAll();
 	
-	//! A function that will request filename and save all histories into filename
+	/**
+	* A function that will request filename and save all histories into filename
+	* 
+	* I.S No file in current directory
+	*
+	* F.S New file with All user's input written into a file
+	*/
 	void save();
 	
-	//! A function that will undo n user's last Set commands
+	/**
+	* A function that will undo n user's last Set commands
+	* 
+	* I.S Last user's set options
+	*
+	* F.S Current settings is final 
+	*/
 	void undo(int);
 	
 	//! A function that will redo n user's undone Set commands

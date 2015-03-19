@@ -114,6 +114,10 @@ void CommandHistory::save()
 	string filename = temp;
 	FILE* fp = fopen(filename.c_str(),"w");
 	
+	time_t t = time(0);   // get time now
+	struct tm * now = localtime( & t );
+	fprintf(fp,"%d - %d - %d\n\n",now->tm_year + 1900),(now->tm_mon + 1),now->tm_mday);
+	
 	// popping every last histories for saving to file from save Stack
 	while(!saveStack.isEmpty())
 	{

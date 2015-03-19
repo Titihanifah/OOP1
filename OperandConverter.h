@@ -50,15 +50,14 @@ public:
 	//! A function returning changed expression into an Arabic Number expression
 	string toArabicExpression();
 	
-	//!
 	/*!
 	A function that set the expression this object is holding
 
-	I.S "true & (false & ! true)"
+	I.S expression = old expression
 	
-	F.S "1 & ( 0 & ! 1)"
+	F.S expression = new expression
 	*/
-	void setExpression(string in);
+	void setExpression(string);
 };
 
 #endif
