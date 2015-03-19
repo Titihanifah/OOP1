@@ -72,6 +72,7 @@ void CommandHistory::showMem(int n)
 		printf(" - %s\n",temp.c_str());
 		n--;
 	}
+	printf("\n");
 	
 	// popping back last n histories back into save Stack
 	while(!tempStack.isEmpty())
@@ -153,7 +154,7 @@ void CommandHistory::undo(int n)
 		undoStack.pop(temp);
 		redoStack.push(temp);
 		char* ttemp =(char*) temp.c_str(); // temporary value to hold last user's Set commands
-		char* tttemp;
+		char* tttemp[100];
 		// takes the first word in user's Set commands
 		sscanf(ttemp,"%s",tttemp);
 		if (strcmp(ttemp,"SET") == 0)
@@ -217,7 +218,7 @@ void CommandHistory::redo(int n)
 		redoStack.pop(temp);
 		undoStack.push(temp);
 		char* ttemp =(char*) temp.c_str(); // temporary value to hold last user's Set commands
-		char* tttemp;
+		char* tttemp[100];
 		sscanf(ttemp,"%s",tttemp);
 		// takes the first word in user's Set commands
 		if (strcmp(ttemp,"SET") == 0)
