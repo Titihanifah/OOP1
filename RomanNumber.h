@@ -1,6 +1,7 @@
 #include <string>
 #include <cstdlib>
 #include "Number.h"
+#include <iostream>
 using namespace std;
 #ifndef ROMANNUMBER_h
 #define ROMANNUMBER_h

@@ -44,14 +44,21 @@ int RomanNumber:: digitToArabic(char c){
 string RomanNumber::toRomanNumber(int R){
 	int temp_num=R, kurangi=0;
 	string hasil,temp_hasil;
-	if(temp_num>=1 && temp_num<=3999){
-		while(temp_num>0){
-			digitToRoman(temp_num,temp_hasil, kurangi);
-			temp_num-=kurangi;
-			hasil.append(temp_hasil);
+	try{
+		if(temp_num>=1 && temp_num<=3999){
+			while(temp_num>0){
+				digitToRoman(temp_num,temp_hasil, kurangi);
+				temp_num-=kurangi;
+				hasil.append(temp_hasil);
+			}
+			return hasil;
+		}
+		else{
+			throw string("Roman Number out of bound, allowed range: 1<=n<=3999.");
 		}
 	}
-	return hasil;
+	catch(string s){cout<<s<<endl;}
+	return "";
 }
 
 void RomanNumber:: digitToRoman(int n, string &hasil, int &kurangi){
