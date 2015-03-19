@@ -61,14 +61,16 @@ string ExpressionConverter::toPostfix(string expression) {
 		{
 			if (expression[i] != ' ')
 			{
-				if (oprnd != "")
+				if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && (expression[i+1] == ' ')))
 				{
-					oprnd += " ";
-					postfix += oprnd;
-					oprnd = "";
-				}
-				if (isOperator(expression[i]))
-				{
+					if (oprnd != "")
+					{
+						oprnd += " ";
+						//cout << "oprnd : " << oprnd << endl;
+						postfix += oprnd;
+						oprnd = "";
+					}
+					//cout << "opr : " << expression[i] << endl;
 					postfix.append(1, expression[i]);
 					if (i != nonspc)
 					{
@@ -77,7 +79,17 @@ string ExpressionConverter::toPostfix(string expression) {
 				}
 				else
 				{
-					oprnd = expression[i] + oprnd;
+					oprnd += expression[i];
+				}
+			}
+			else
+			{
+				if (oprnd != "")
+				{
+					oprnd += " ";
+					//cout << "oprnd : " << oprnd << endl;
+					postfix += oprnd;
+					oprnd = "";
 				}
 			}
 		}
@@ -95,14 +107,14 @@ string ExpressionConverter::toPostfix(string expression) {
 		{
 			if (expression[i] != ' ')
 			{
-				if (oprnd != "")
+				if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && (expression[i+1] == ' ')))
 				{
-					oprnd += " ";
-					S.push(oprnd);
-					oprnd = "";
-				}
-				if (isOperator(expression[i]))
-				{
+					if (oprnd != "")
+					{
+						oprnd += " ";
+						S.push(oprnd);
+						oprnd = "";
+					}
 					string op1 = "";
 					string op2 = "";
 					S.pop(op1);
@@ -120,6 +132,15 @@ string ExpressionConverter::toPostfix(string expression) {
 					oprnd = expression[i] + oprnd;
 				}
 			}
+			else 
+			{
+				if (oprnd != "")
+				{
+					oprnd += " ";
+					S.push(oprnd);
+					oprnd = "";
+				}
+			}
 		}
 		S.pop(postfix);
 	}
@@ -131,7 +152,7 @@ string ExpressionConverter::toPostfix(string expression) {
 		              //2 : previous char is operator that has caused at least one operator has been popped from stack
 		for (int i = 0; i < expression.length(); i++)
 		{
-			if (isOperator(expression[i]))
+			if (((isOperator(expression[i])) &&(expression[i] != '-')) || ((expression[i] == '-') && (expression[i+1] == ' ')))
 			{
 				if ((mode == 1) && (stemp != ""))
 				{
